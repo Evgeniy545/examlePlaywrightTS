@@ -1,0 +1,55 @@
+.defauls-rules: &default-rules
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  tags:
+    - tpsg-multistage
+.defaults-environment: &defaults-environment
+  name: $CI_COMMIT_REF_NAME.playwright.tpsg.etpgpb.ru
+  url: https://$CI_COMMIT_REF_NAME.playwright.tpsg.etpgpb.ru
+
+stages:
+  - start
+  - tests
+  - deploy
+  - clean
+
+
+run_tests:
+  <<: *default-rules
+  stage: tests
+  needs: [start]
+  allow_failure: true
+  script:
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test --reporter=line,experimental-allure-playwright
+
+
+deploy:
+  <<: *default-rules
+  environment:
+    auto_stop_in: 1 day
+    <<: *defaults-environment
+    on_stop: clean_env
+  stage: deploy
+  needs: [run_tests]
+  script:
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} -f docker-compose.yml up -d --force-recreate
+
+clean_env:
+  <<: *default-rules
+  environment:
+    <<: *defaults-environment
+    action: stop
+  stage: clean
+  allow_failure: true
+  script:
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} -f docker-compose.yml down -v
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+      when: manual
+
+
+
+
+
+

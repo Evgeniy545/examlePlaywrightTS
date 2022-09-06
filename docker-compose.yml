@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  playwright:
+    image: harbor.etpgpb.ru/drb-tpsg/playwright:1.0
+    volumes:
+      - ./playwright.config.ts:/usr/src/app/playwright.config.ts:ro
+      - ./tests:/usr/src/app/tests
+      - playwright-report:/usr/src/app/allure-report
+      - playwright-result:/usr/src/app/allure-results
+    networks:
+      - proxy
+    labels:
+      - traefik.frontend.rule=Host:${CI_COMMIT_REF_NAME}.playwright.tpsg.etpgpb.ru
+      - traefik.docker.network=proxy
+      - traefik.port=9323
+volumes:
+   playwright-result: {}
+   playwright-report: {}
+networks:
+  proxy:
+    external: true
