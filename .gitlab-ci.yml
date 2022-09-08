@@ -2,6 +2,7 @@
   rules:
     - if: $CI_MERGE_REQUEST_ID
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "web" 
   tags:
     - tpsg-multistage
 .defaults-environment: &defaults-environment
@@ -9,20 +10,26 @@
   url: https://$CI_COMMIT_REF_NAME.playwright.tpsg.etpgpb.ru
 
 stages:
-  - start
   - tests
   - deploy
   - clean
 
 
+# start_traefik:
+#   <<: *default-rules
+#   stage: tests
+#   needs: [build_base_image]
+#   script:
+#     - if [[ $( docker network ls | grep proxy | wc -l ) -ne 1 ]]; then docker network create proxy; fi
+#     - docker-compose -f dc-traefik.yml up -d
+
 run_tests:
   <<: *default-rules
   stage: tests
-  needs: [start]
   allow_failure: true
+  when: manual
   script:
-    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test --reporter=line,experimental-allure-playwright
-
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS}
 
 deploy:
   <<: *default-rules

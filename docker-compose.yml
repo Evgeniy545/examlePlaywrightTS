@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   playwright:
-    image: harbor.etpgpb.ru/drb-tpsg/playwright:1.0
+    image: ${PLAYWRIGHT_IMAGE_NAME}
     volumes:
       - ./playwright.config.ts:/usr/src/app/playwright.config.ts:ro
       - ./tests:/usr/src/app/tests
