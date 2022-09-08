@@ -33,8 +33,8 @@ const config: PlaywrightTestConfig = {
     screenshot: 'only-on-failure',
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: '${BASE_URL}',
-
+    baseURL: process.env.BASE_URL,
+    ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },

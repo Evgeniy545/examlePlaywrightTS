@@ -8,6 +8,8 @@ services:
       - ./pages:/usr/src/app/pages
       - playwright-report:/usr/src/app/allure-report
       - playwright-result:/usr/src/app/allure-results
+    environment:
+      BASE_URL: ${BASE_URL}
     networks:
       - proxy
     labels:
