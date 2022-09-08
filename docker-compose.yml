@@ -5,6 +5,7 @@ services:
     volumes:
       - ./playwright.config.ts:/usr/src/app/playwright.config.ts:ro
       - ./tests:/usr/src/app/tests
+      - ./pages:/usr/src/app/pages
       - playwright-report:/usr/src/app/allure-report
       - playwright-result:/usr/src/app/allure-results
     networks:
