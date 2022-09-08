@@ -14,21 +14,6 @@ stages:
   - deploy
   - clean
 
-start:
-  <<: *default-rules
-  stage: start
-  when: manual
-  script:
-    - exit 0
-
-# start_traefik:
-#   <<: *default-rules
-#   stage: tests
-#   needs: [build_base_image]
-#   script:
-#     - if [[ $( docker network ls | grep proxy | wc -l ) -ne 1 ]]; then docker network create proxy; fi
-#     - docker-compose -f dc-traefik.yml up -d
-
 run_tests:
   <<: *default-rules
   stage: tests
