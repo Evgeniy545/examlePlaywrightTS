@@ -8,5 +8,4 @@ test('Check Login', async ({ page }) => {
   await notAuth.checkFillInputLogin('y.dyurchek@etpgpb.ru');
   await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
   await notAuth.loginInCRM();
-  exit;
   });

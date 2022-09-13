@@ -7,3 +7,5 @@ package.json
 playwright.config.ts
 e2e/
 tests-examples/
+.env
+allure-results/
