@@ -10,15 +10,25 @@
   url: https://$CI_COMMIT_REF_NAME.playwright.tpsg.etpgpb.ru
 
 stages:
+  - linter
   - tests
   - deploy
   - clean
+  - build
 
-run_tests:
+eslint:
+  <<: *default-rules
+  stage: linter
+  when: manual
+  allow_failure: false
+  script:
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH}
+
+playwright_test:
   <<: *default-rules
   stage: tests
   allow_failure: true
-  when: manual
+  needs: [eslint]
   script:
     - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS}
 
@@ -29,7 +39,7 @@ deploy:
     <<: *defaults-environment
     on_stop: clean_env
   stage: deploy
-  needs: [run_tests]
+  needs: [playwright_test]
   script:
     - docker-compose --project-name ${CI_COMMIT_REF_NAME} -f docker-compose.yml up -d --force-recreate
 
@@ -44,11 +54,11 @@ clean_env:
     - docker-compose --project-name ${CI_COMMIT_REF_NAME} -f docker-compose.yml down -v
   rules:
     - if: $CI_MERGE_REQUEST_ID
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: manual
 
-
-
-
-
-
+build_image:
+  <<: *default-rules
+  stage: build
+  when: manual
+  script:
+    - docker build -t ${PLAYWRIGHT_IMAGE_NAME} .
