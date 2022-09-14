@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { exit } from 'process';
-import { NotAuth } from '../pages/crm/not_auth';
+import { Analytics } from '../../pages/crm/analytics';
+import { NotAuth } from '../../pages/crm/not_auth';
 
 test('Check Login', async ({ page }) => {
   const notAuth = new NotAuth(page);
@@ -8,4 +8,6 @@ test('Check Login', async ({ page }) => {
   await notAuth.checkFillInputLogin('y.dyurchek@etpgpb.ru');
   await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
   await notAuth.loginInCRM();
+  const analytics = new Analytics(page);
+  await expect(page).toHaveURL(analytics.URL);
   });
