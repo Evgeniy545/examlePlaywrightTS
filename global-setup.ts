@@ -1,6 +1,6 @@
 import { chromium, expect, request } from '@playwright/test';
 import { FullConfig } from '@playwright/test';
-import dotenv from 'dotenv';
+//import dotenv from 'dotenv';
 import { NotAuth } from './pages/crm/not_auth';
 
 
@@ -40,8 +40,8 @@ async function globalSetup(config: FullConfig) {
   const LOGIN = String(process.env.LOGIN);
   const PASS = String(process.env.PASS);
   await page.goto(URL + '/crm/not_auth');
-  await page.locator('[data-test="adminAuthLogin"]').type(LOGIN);
-  await page.locator('input[type="password"]').fill(PASS);
+  await page.locator('[data-test="adminAuthLogin"]').type('tpsg.gpb+admin@gmail.com');
+  await page.locator('input[type="password"]').fill('y*n@cb9XIxZnWO8h');
   await page.locator('data-test=adminAuthBtn').click();
   await expect(page).toHaveURL(/.*analytics/);
 
