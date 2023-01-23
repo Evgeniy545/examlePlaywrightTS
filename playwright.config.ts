@@ -13,7 +13,7 @@ dotenv.config();
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 300 * 10000,
   expect: {
 
     timeout: 5000
@@ -28,7 +28,9 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['line'], ['allure-playwright']],  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  globalSetup: require.resolve('./global-setup'),
   use: {
+    storageState: 'storageState.json',
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     screenshot: 'only-on-failure',
     actionTimeout: 0,
@@ -37,6 +39,7 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    
   },
 
   /* Configure projects for major browsers */

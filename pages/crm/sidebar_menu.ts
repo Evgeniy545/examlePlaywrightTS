@@ -12,7 +12,7 @@ export class SidebarMenu {
 
   constructor(page: Page) {
     this.page = page;
-    this.URL = '/crm';
+    this.URL = '/crm/profile';
     this.analyticsItem = page.locator('span', { hasText: 'Аналитическая справка' });
     this.leadsItem = page.locator('span', { hasText: 'Заявки' });
     this.leadsMangementItem = page.locator('span', { hasText: 'Управление заявками' });
@@ -24,11 +24,16 @@ export class SidebarMenu {
 
   async goto() {
     this.page.goto(this.URL);
+    
   }
   
   async clickAnyItem(locator: Locator) {
     locator.click();
   }
 
+  async close() {
+    this.page.close();
+    
+  }
   
 }

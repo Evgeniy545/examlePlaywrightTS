@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { Analytics } from '../../pages/crm/analytics';
 import { NotAuth } from '../../pages/crm/not_auth';
 
+test.use({ storageState: 'storageState1.json' });
+
 test('Check Login', async ({ page }) => {
   const notAuth = new NotAuth(page);
   await notAuth.goto();
@@ -10,4 +12,4 @@ test('Check Login', async ({ page }) => {
   await notAuth.loginInCRM();
   const analytics = new Analytics(page);
   await expect(page).toHaveURL(analytics.URL);
-  });
+});

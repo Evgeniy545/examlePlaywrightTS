@@ -1,0 +1,227 @@
+{
+  "cookies": [
+    {
+      "name": "tmr_lvid",
+      "value": "d45fe4dba3b04796cb8221b767391a7f",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1703256097,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "tmr_lvidTS",
+      "value": "1674484897339",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1703256097,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "remixlang",
+      "value": "0",
+      "domain": ".vk.com",
+      "path": "/",
+      "expires": 1706353453.495475,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "remixstlid",
+      "value": "9095391956147994752_GqkMOYXkDg5hx0ZyYC8MGLT0EmN1R93zoopjTdheEpH",
+      "domain": ".vk.com",
+      "path": "/",
+      "expires": 1706020897.495511,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_uid",
+      "value": "16744848981027852924",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1706020897,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_d",
+      "value": "1674484898",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1706020897,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yabs-sid",
+      "value": "1641634061674484898",
+      "domain": "mc.yandex.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "i",
+      "value": "BLl0Fa+ncvI9buABzFTcjzMyiyeYB5vFU4cSsEqlZ75azPR1EB4yewQzA0WCTcq6Ihjxpax4XFr7Ed3vYQynk66dZTg=",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1709044897.994974,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yandexuid",
+      "value": "5577084511674484898",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1709044897.995049,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yuidss",
+      "value": "5577084511674484898",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1709044897.995073,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_isad",
+      "value": "2",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1674556898,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ymex",
+      "value": "1989844898.yrts.1674484898#1989844898.yrtsi.1674484898",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1706020898.140939,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_visorc",
+      "value": "w",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1674486698,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.2.1576524169.1674484898",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1709044898.241385,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.948891767.1674484898",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1674571298,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat",
+      "value": "1",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1674484958,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0MDU3Iiwic2NwIjoidjFfYWRtaW4iLCJhdWQiOm51bGwsImlhdCI6MTY3NDQ4NDg5OCwiZXhwIjoxNjc3MTE0NjQ0LCJqdGkiOiI5NDRhZWYyYS1iOGIxLTQ2YjEtYWE2OS0zODc3YmUwNDFmMDgifQ.UHNWs3IxY5sl5sQAIdFHJiQ_FkE8gdXG1R9pFYKJ5z8",
+      "domain": "6252_contract_termination_way_by_user.tpsg.etpgpb.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "tmr_detect",
+      "value": "0%7C1674484899779",
+      "domain": "6252_contract_termination_way_by_user.tpsg.etpgpb.ru",
+      "path": "/",
+      "expires": 1674571299,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://6252_contract_termination_way_by_user.tpsg.etpgpb.ru",
+      "localStorage": [
+        {
+          "name": "_ym84955483:0_reqNum",
+          "value": "4"
+        },
+        {
+          "name": "_ym_retryReqs",
+          "value": "{}"
+        },
+        {
+          "name": "_ym_wv2rf:84955483:0",
+          "value": "1"
+        },
+        {
+          "name": "_ym84955483_lsid",
+          "value": "233054221840"
+        },
+        {
+          "name": "tmr_lvidTS",
+          "value": "1674484897339"
+        },
+        {
+          "name": "tmr_reqNum",
+          "value": "2"
+        },
+        {
+          "name": "_ym_synced",
+          "value": "{}"
+        },
+        {
+          "name": "_ym_uid",
+          "value": "\"16744848981027852924\""
+        },
+        {
+          "name": "tmr_lvid",
+          "value": "d45fe4dba3b04796cb8221b767391a7f"
+        }
+      ]
+    }
+  ]
+}

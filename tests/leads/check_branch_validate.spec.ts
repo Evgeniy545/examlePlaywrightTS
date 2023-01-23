@@ -14,14 +14,21 @@ import { SidebarMenu } from '../../pages/crm/sidebar_menu';
   await notAuth.loginInCRM();
 });*/
 
-test('Check button "+" lead', async ({ page }) => {
-  await page.goto('/crm');
-  const sidebar_menu = new SidebarMenu(page);
-  await page.goto('/crm');
-  //sidebar_menu.goto();
-  sidebar_menu.clickAnyItem(sidebar_menu.leadsItem);
-  const leads = new Leads(page);
-  await leads.clickButtonAdd();
-  const leads_new = new LeadsNew(page);
-  await expect(page).toHaveURL(leads_new.URL);
+test('Check branch validate "+" lead', async ({ page }) => {
+  const lead_new = new LeadsNew(page);
+  await lead_new.gotoUrlUser('734576');
+  await lead_new.buttonNext.click();
+  await expect(lead_new.inputError).toBeVisible;
   });
+
+
+  test('Check go to next step"+" lead', async ({ page }) => {
+    const lead_new = new LeadsNew(page);
+    await lead_new.gotoUrlUser('734576');
+    await lead_new.fillInputBranchGro();
+    await lead_new.buttonNext.click();
+
+    });
+
+
+
