@@ -10,6 +10,8 @@ services:
       - playwright-result:/usr/src/app/allure-results
     environment:
       BASE_URL: ${BASE_URL}
+      LOGIN: ${LOGIN}
+      PASS: ${PASS}
     networks:
       - proxy
     labels:
