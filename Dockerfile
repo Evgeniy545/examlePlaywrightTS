@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.25.0-focal
+FROM mcr.microsoft.com/playwright:v1.30.0-focal
 WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk
