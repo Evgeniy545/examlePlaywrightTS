@@ -10,17 +10,25 @@
   url: https://$CI_COMMIT_REF_NAME.playwright.tpsg.etpgpb.ru
 
 stages:
+  - start
   - linter
   - tests
   - deploy
   - clean
   - build
 
+start_pipeline:
+  <<: *default-rules
+  stage: start
+  when: manual
+  script:
+    - docker login -u $DOCKER_REGISTRY_LOGIN -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
+    - exit 0
+
 eslint:
   <<: *default-rules
   stage: linter
-  when: manual
-  allow_failure: false
+  needs: [start_pipeline]
   script:
     - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH}
 
@@ -61,4 +69,6 @@ build_image:
   stage: build
   when: manual
   script:
-    - docker build -t ${PLAYWRIGHT_IMAGE_NAME} .
+    - docker build -t $PLAYWRIGHT_IMAGE_NAME .
+    - docker login -u $DOCKER_REGISTRY_LOGIN -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
+    - docker push $PLAYWRIGHT_IMAGE_NAME
