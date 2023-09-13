@@ -10,3 +10,9 @@ tests-examples/
 .env
 allure-results/
 .gitignore
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
