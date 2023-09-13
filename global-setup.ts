@@ -21,7 +21,6 @@ async function globalSetup(config: FullConfig) {
  const context = await browser.newContext({ ignoreHTTPSErrors: true });
  await context.addCookies([{name: "token", value: ress, path:'/', domain: '.etpgpb.ru'}]);
  const page = await context.newPage(); 
- //console.log(await context.cookies());
  await page.goto(URL + '/crm');
  await page.context().storageState({ path: 'storageState2.json' });
  await context.close();
