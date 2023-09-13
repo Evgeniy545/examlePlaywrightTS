@@ -1,12 +1,12 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
-//import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
-//dotenv.config();
+dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -28,9 +28,9 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['line'], ['allure-playwright']],  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  //globalSetup: require.resolve('./global-setup'),
+  globalSetup: require.resolve('./global-setup'),
   use: {
-    storageState: 'storageState.json',
+    storageState: 'storageState2.json',
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     screenshot: 'only-on-failure',
     actionTimeout: 0,
