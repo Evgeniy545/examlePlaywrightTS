@@ -1,0 +1,175 @@
+{
+  "cookies": [
+    {
+      "name": "token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OTY5Iiwic2NwIjoidjFfYWRtaW4iLCJhdWQiOm51bGwsImlhdCI6MTY5ODEzNjExOSwiZXhwIjoxNzAwNzY1ODY1LCJqdGkiOiIzOTkyMzMwNS1iY2FjLTRhNzEtOTQxNy0zMzJkMzNkZmNlNGYifQ.c0JMHR5cqccOUQ4jdr4D0THslogXl4_90ZwgxXCp97Y",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "i",
+      "value": "xBJVVraiCm0nHEV4mkMbKmd0O79aMsDYZi3x+pwqa1VGWRKHbXk9gvNyY6akBXl36pkLq4KS9Eq8QTxEyP2msVgzGJk=",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696116.282486,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yandexuid",
+      "value": "4555595191698136116",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696118.240378,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_uid",
+      "value": "1698136118182356978",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1729672118,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_d",
+      "value": "1698136118",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1729672118,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_isad",
+      "value": "2",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698208118,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yabs-sid",
+      "value": "1043203081698136119",
+      "domain": "mc.yandex.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yuidss",
+      "value": "4555595191698136116",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696118.240402,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ymex",
+      "value": "2013496119.yrts.1698136119",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1729672118.240415,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_visorc",
+      "value": "w",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698137918,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bh",
+      "value": "EkIiQ2hyb21pdW0iO3Y9IjExNiIsICJOb3QpQTtCcmFuZCI7dj0iMjQiLCAiSGVhZGxlc3NDaHJvbWUiO3Y9IjExNiIaBSJ4ODYiIg8iMTE2LjAuNTg0NS44MiIqAj8wOgkiV2luZG93cyJCCCIxMC4wLjAiSgQiNjQiUlsiQ2hyb21pdW0iO3Y9IjExNi4wLjU4NDUuODIiLCJOb3QpQTtCcmFuZCI7dj0iMjQuMC4wLjAiLCJIZWFkbGVzc0Nocm9tZSI7dj0iMTE2LjAuNTg0NS44MiIi",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1729672118.332058,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.2.2118468109.1698136118",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1732696118.361242,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.1720772415.1698136118",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698222518,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat",
+      "value": "1",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698136178,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://8152_ppg_import.tpsg.etpgpb.ru",
+      "localStorage": [
+        {
+          "name": "_ym_synced",
+          "value": "{}"
+        },
+        {
+          "name": "_ym84955483:0_reqNum",
+          "value": "2"
+        },
+        {
+          "name": "_ym_uid",
+          "value": "\"1698136118182356978\""
+        },
+        {
+          "name": "_ym84955483_lsid",
+          "value": "1365270466934"
+        },
+        {
+          "name": "_ym_wv2rf:84955483:0",
+          "value": "1"
+        },
+        {
+          "name": "_ym_retryReqs",
+          "value": "{}"
+        }
+      ]
+    }
+  ]
+}

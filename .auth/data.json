@@ -1,0 +1,47 @@
+{
+  "etp_admin": {
+    "login": "tpsg.gpb@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "etp_admin"
+  },
+  "senior_manager": {
+    "login": "tpsg.gpb+admin_gro_p@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "senior_manager"
+  },
+  "operator": {
+    "login": "tpsg.gpb+operator_p@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "operator"
+  },
+  "eog": {
+    "login": "tpsg.gpb+eog@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "eog"
+  },
+  "auditor": {
+    "login": "tpsg.gpb+aud@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "auditor"
+  },
+  "mfc": {
+    "login": "tpsg.gpb+mfc@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "mfc"
+  },
+  "regional_head": {
+    "login": "tpsg.gpb+arsh@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "regional_head"
+  },
+  "mfc_admin": {
+    "login": "tpsg.gpb+admin_mfc@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "mfc_admin"
+  },
+  "mfc_operator": {
+    "login": "tpsg.gpb+operator_mfc@gmail.com",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "mfc_operator"
+  }
+}

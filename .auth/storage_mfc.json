@@ -1,0 +1,161 @@
+{
+  "cookies": [
+    {
+      "name": "token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OTY3Iiwic2NwIjoidjFfYWRtaW4iLCJhdWQiOm51bGwsImlhdCI6MTY5ODEzNjEwOSwiZXhwIjoxNzAwNzY1ODU1LCJqdGkiOiI3NzAyNzVlYS01MGEwLTQxYzQtYjRhNS05NzgzYzg0Mjk4NmYifQ.A06q1Dq1-aIKQyoRHqQGne_B47hYj0EBKTGdP8B5M18",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "i",
+      "value": "9s4wO6HtLR/PZzL+MPrdTP2FyQTT2SC9NiUIzbtRYLTDXHNVnXyftc2j0WNuRC9+yaUhzCXQO5T+TtCMqskY2wOri4g=",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696106.713756,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yandexuid",
+      "value": "6827768251698136107",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696107.607134,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_uid",
+      "value": "1698136108699845052",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1729672107,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_d",
+      "value": "1698136108",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1729672107,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ym_isad",
+      "value": "2",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698208107,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yabs-sid",
+      "value": "945003441698136108",
+      "domain": "mc.yandex.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "yuidss",
+      "value": "6827768251698136107",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1732696107.607163,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ymex",
+      "value": "2013496108.yrts.1698136108",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1729672107.607179,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bh",
+      "value": "EkAiQ2hyb21pdW0iO3Y9IjExNiIsIk5vdClBO0JyYW5kIjt2PSIyNCIsIkhlYWRsZXNzQ2hyb21lIjt2PSIxMTYiGgUieDg2IiIPIjExNi4wLjU4NDUuODIiKgI/MDoJIldpbmRvd3MiQggiMTAuMC4wIkoEIjY0IlJbIkNocm9taXVtIjt2PSIxMTYuMC41ODQ1LjgyIiwiTm90KUE7QnJhbmQiO3Y9IjI0LjAuMC4wIiwiSGVhZGxlc3NDaHJvbWUiO3Y9IjExNi4wLjU4NDUuODIiIg==",
+      "domain": ".yandex.ru",
+      "path": "/",
+      "expires": 1729672107.702735,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.2.1088358287.1698136108",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1732696107.731396,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.1798322991.1698136108",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698222507,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat",
+      "value": "1",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": 1698136167,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://8152_ppg_import.tpsg.etpgpb.ru",
+      "localStorage": [
+        {
+          "name": "_ym_synced",
+          "value": "{}"
+        },
+        {
+          "name": "_ym84955483:0_reqNum",
+          "value": "2"
+        },
+        {
+          "name": "_ym_uid",
+          "value": "\"1698136108699845052\""
+        },
+        {
+          "name": "_ym84955483_lsid",
+          "value": "1626281957875"
+        },
+        {
+          "name": "_ym_retryReqs",
+          "value": "{}"
+        }
+      ]
+    }
+  ]
+}

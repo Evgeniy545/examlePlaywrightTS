@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Analytics } from '../../pages/crm/analytics';
 import { NotAuth } from '../../pages/crm/not_auth';
 
-test.use({ storageState: 'storageState1.json' });
+test.use({ storageState: 'storage/storageState1.json' });
 
 test('Check Login', async ({ page }) => {
   const notAuth = new NotAuth(page);

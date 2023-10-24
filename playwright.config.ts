@@ -1,6 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
+import { defineConfig } from '@playwright/test';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -13,11 +14,12 @@ dotenv.config();
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 300 * 10000,
+  timeout: 30 * 1000,
   expect: {
 
     timeout: 5000
   },
+  
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -30,7 +32,8 @@ const config: PlaywrightTestConfig = {
   reporter: [['line'], ['allure-playwright']],  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   globalSetup: require.resolve('./global-setup'),
   use: {
-    storageState: 'storageState2.json',
+    //navigationTimeout: 60 * 1000,
+    storageState: 'storage/storageState2.json',
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     screenshot: 'only-on-failure',
     actionTimeout: 0,
@@ -103,5 +106,4 @@ const config: PlaywrightTestConfig = {
   //   port: 3000,
   // },
 };
-
 export default config;
