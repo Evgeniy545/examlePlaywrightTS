@@ -1,19 +1,21 @@
 import { chromium, expect, request } from '@playwright/test';
+import * as fs from 'fs';
+import { constants } from 'fs';
 
 
 export async function getToken(email: string, password: string) {
     const URL = String(process.env.BASE_URL);
     const requestContext = await request.newContext();
     const responce = await requestContext.post(URL + '/v1/admin/token', {
-      data: { "auth": { email, password } },
-      ignoreHTTPSErrors: true,
-  
+        data: { "auth": { email, password } },
+        ignoreHTTPSErrors: true,
+
     });
     const res = await responce.json();
     return res.jwt;
-  }
+}
 
-  export async function createStorageFile(key: string, token: string) {
+export async function createStorageFile(key: string, token: string) {
     const URL = String(process.env.BASE_URL);
     const browser = await chromium.launch();
     const context = await browser.newContext({ ignoreHTTPSErrors: true });
@@ -22,4 +24,4 @@ export async function getToken(email: string, password: string) {
     await page.goto(URL + '/crm');
     await page.context().storageState({ path: '.auth/storage_' + key + '.json' });
     await context.close();
-  }
+}

@@ -9,8 +9,18 @@ import data from './.auth/data.json';
 async function globalSetup(config: FullConfig) {
   for (var key in data) {
     //console.log(key);   
-    const token = await getToken(String(data[key].login), String(data[key].password))
-    await createStorageFile(key, token);
+    try {
+      if (fs.existsSync('.auth/storage_' + key + '.json')) {
+          //file exists
+      }
+      else{
+        const token = await getToken(String(data[key].login), String(data[key].password))
+        await createStorageFile(key, token);
+      }
+  } catch (err) {
+    console.log(err);
+  }
+    
   }
 
 
