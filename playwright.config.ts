@@ -33,7 +33,7 @@ const config: PlaywrightTestConfig = {
   globalSetup: require.resolve('./global-setup'),
   use: {
     //navigationTimeout: 60 * 1000,
-    storageState: 'storage/storageState2.json',
+    //storageState: 'storage/storageState2.json',
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     screenshot: 'only-on-failure',
     actionTimeout: 0,

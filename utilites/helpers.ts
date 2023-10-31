@@ -25,3 +25,36 @@ export async function createStorageFile(key: string, token: string) {
     await page.context().storageState({ path: '.auth/storage_' + key + '.json' });
     await context.close();
 }
+
+
+export async function getLeadId(user_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.post(URL + '/v1/admin/users/'+user_id+'/leads', {
+        headers:{
+            'Authorization': token,  
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    const res = await responce.json();
+    //console.log(res);
+    return res.data.id;
+}
+
+export async function updateStatusLead(lead_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.put(URL + '/v1/admin/leads/'+lead_id+'/update_status', {
+        headers:{
+            'Authorization': token,  
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    const res = await responce.json();
+    console.log(res);
+    return res;
+}

@@ -1,0 +1,122 @@
+{
+    "data": {
+      "type": "lead",
+      "attributes": {
+        "preferrential_category": false,
+        "has_confidant": false,
+        "owner": {
+          "phone": "",
+          "fullname": "",
+          "email": "",
+          "snils": "",
+          "birth_date": null,
+          "passport": {
+            "branch": "",
+            "date": null,
+            "number": "",
+            "series": "",
+            "identification_document": ""
+          }
+        },
+        "feedback_type": "Телефон",
+        "contact_info": {
+          "fullname": "Заявитель_ПСКоВ Заявитель_ПСКоВ Заявитель_ПСКоВ",
+          "email": "tpsg.gpb+01@gmail.com",
+          "phone": ""
+        },
+        "planned_gas_consumption": "2",
+        "last_tu_number": "",
+        "last_tu_date": null,
+        "extra_info": "",
+        "contract_sign_type": "handwritten",
+        "snt": true,
+        "snt_inn": "2222222222",
+        "snt_ogrn": "2222222222222",
+        "additional_activity_ids": []
+      },
+      "relationships": {
+        "service": {
+          "data": {
+            "type": "service",
+            "id": "24"
+          }
+        },
+        "gas_object_address": {
+          "data": {
+            "type": "gas_object_address",
+            "attributes": {
+              "area": "",
+              "area_fias_id": "",
+              "block": "",
+              "cadastral_home_number": "",
+              "cadastral_number": "60:23:12323123",
+              "city": "Псков",
+              "city_fias_id": "2858811e-448a-482e-9863-e03bf06bb5d4",
+              "extra": "",
+              "flat": "",
+              "has_capital_construction": true,
+              "house": "",
+              "house_fias_id": "",
+              "oktmo": "",
+              "region": "Псковская обл",
+              "region_fias_id": "f6e148a1-c9d0-4141-a608-93e3bd95e6c4",
+              "room": "",
+              "settlement": "",
+              "settlement_fias_id": "",
+              "street": "",
+              "street_fias_id": "",
+              "title": "г Псков",
+              "zip_code": "180000"
+            }
+          }
+        },
+        "organization": {
+          "data": {
+            "type": "organization",
+            "id": "1"
+          }
+        },
+        "source": {
+          "data": {
+            "type": "source",
+            "id": "10"
+          }
+        },
+        "branch": {
+          "data": {
+            "type": "organization_branch",
+            "id": "1048"
+          }
+        },
+        "correspondence_address": {
+          "data": {
+            "type": "correspondence_address",
+            "attributes": {
+              "area": "",
+              "area_fias_id": "",
+              "block": "",
+              "cadastral_home_number": "",
+              "cadastral_number": "",
+              "city": "Псков",
+              "city_fias_id": "2858811e-448a-482e-9863-e03bf06bb5d4",
+              "extra": "",
+              "flat": "",
+              "has_capital_construction": true,
+              "house": "",
+              "house_fias_id": "",
+              "oktmo": "",
+              "region": "Псковская обл",
+              "region_fias_id": "f6e148a1-c9d0-4141-a608-93e3bd95e6c4",
+              "room": "",
+              "settlement": "",
+              "settlement_fias_id": "",
+              "street": "",
+              "street_fias_id": "",
+              "title": "г Псков",
+              "zip_code": "180000"
+            }
+          }
+        }
+      }
+    }
+  }
