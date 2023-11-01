@@ -10,10 +10,21 @@ import data3 from '../../data/status_pending.json';
 import data4 from '../../data/status_documents_given.json';
 import data5 from '../../data/status_denied.json';
 import data6 from '../../data/status_in_progress.json';
+import data_storage_admin from '../../.auth/storage_etp_admin.json'; 
 
-test('Проверка мессаджа в очереди после регистрации заявки', async ({ page }) => {
-  var key = 'etp_admin';
-  const token = await getToken(String(data[key].login), String(data[key].password));
+
+test('Проверка мессаджей в очереди статусы "Зарегистрирована" и "Проверка комплктности документов"', async ({ page }) => {
+  const token = String(data_storage_admin.cookies[0].value);
+  //console.log(token);
+  const json = data1;
+  const lead_id = await getLeadId('1222390', token, json);
+  console.log(lead_id);
+  const checkDocUpdateStatus = data2;
+  await updateStatusLead(lead_id, token, checkDocUpdateStatus);
+  });
+
+test('Проверка мессаджей в очереди статус "Отложена" и "Недостающие докуметы предоставлены"', async ({ page }) => {
+  const token = String(data_storage_admin.cookies[0].value);
   //console.log(token);
   const json = data1;
   const lead_id = await getLeadId('1222390', token, json);
@@ -24,10 +35,28 @@ test('Проверка мессаджа в очереди после регис�
   await updateStatusLead(lead_id, token, pendingUpdateStatus);
   const documentsGivUpdateStatus = data4;
   await updateStatusLead(lead_id, token, documentsGivUpdateStatus);
+});
+
+test('Проверка мессаджей в очереди статус "Отказано в заключении договора"', async ({ page }) => {
+  const token = String(data_storage_admin.cookies[0].value);
+  //console.log(token);
+  const json = data1;
+  const lead_id = await getLeadId('1222390', token, json);
+  console.log(lead_id);
+  const checkDocUpdateStatus = data2;
   await updateStatusLead(lead_id, token, checkDocUpdateStatus);
   const deniedUpdateStatus = data5;
   await updateStatusLead(lead_id, token, deniedUpdateStatus);
+});
+
+test('Проверка мессаджей в очереди статус "Подготовка ТУ и заключение договора"', async ({ page }) => {
+  const token = String(data_storage_admin.cookies[0].value);
+  //console.log(token);
+  const json = data1;
+  const lead_id = await getLeadId('1222390', token, json);
+  console.log(lead_id);
+  const checkDocUpdateStatus = data2;
+  await updateStatusLead(lead_id, token, checkDocUpdateStatus);
   const inProgressUpdateStatus = data6;
   await updateStatusLead(lead_id, token, inProgressUpdateStatus);
 });
-

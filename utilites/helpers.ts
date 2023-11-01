@@ -56,6 +56,7 @@ export async function updateStatusLead(lead_id: string, token: string, json: Rec
         ignoreHTTPSErrors: true,
 
     });
+    //console.log(await responce.body);
     expect(responce.ok()).toBeTruthy();
     const res = await responce.json();
     return res;
