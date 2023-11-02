@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { Leads } from '../../pages/crm/leads';
 import { LeadsNew } from '../../pages/crm/lead_new';
-import { NotAuth } from '../../pages/crm/not_auth';
 import { SidebarMenu } from '../../pages/crm/sidebar_menu';
 
 

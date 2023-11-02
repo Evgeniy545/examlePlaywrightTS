@@ -1,8 +1,4 @@
-import { expect } from '@playwright/test';
-import * as fs from 'fs';
-import data from '../../.auth/data.json';
 import { test } from '@playwright/test'
-import { getToken } from '../../utilites/helpers';
 import data1 from '../../data/Body_lead_dogas.json';
 import { getLeadId, updateStatusLead, updateUser } from '../../utilites/helpers';
 import data2 from '../../data/status_check_docements.json';

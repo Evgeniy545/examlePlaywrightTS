@@ -1,6 +1,5 @@
 import { chromium, expect, request } from '@playwright/test';
-import * as fs from 'fs';
-import { constants } from 'fs';
+
 
 
 export async function getToken(email: string, password: string) {
