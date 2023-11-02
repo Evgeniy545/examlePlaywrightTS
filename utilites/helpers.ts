@@ -61,3 +61,19 @@ export async function updateStatusLead(lead_id: string, token: string, json: Rec
     const res = await responce.json();
     return res;
 }
+export async function updateUser(user_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.put(URL + '/v1/admin/users/' + user_id, {
+        headers: {
+            'Authorization': token,
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    //console.log(responce);
+    expect(responce.ok()).toBeTruthy();
+    const res = await responce.json();
+    return res;
+}
