@@ -12,6 +12,6 @@ test('Check clear fieldGro' , async ({ page }) => {
   //const value = await lead_new.returnValueInput();
   //console.log(value);
   await lead_new.cleanInputNameGro();
-  await expect(lead_new.inputNameGro).toBeEmpty;
+  await expect(lead_new.inputNameGro).toBeEmpty();
   console.log(lead_new.returnValueInput());
   });
