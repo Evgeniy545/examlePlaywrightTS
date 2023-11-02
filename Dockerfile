@@ -1,13 +1,8 @@
-FROM mcr.microsoft.com/playwright:v1.30.0-focal
+FROM mcr.microsoft.com/playwright:v1.25.0-focal
 WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk
-RUN npm i -D playwright \
-    && npm i -D @playwright/test \
-    && npm i -D @playwright/test allure-playwright \
-    && npm i -D allure-commandline \
-    && npm i -D eslint-plugin-playwright \
-    && npm i @typescript-eslint/eslint-plugin@latest --save-dev
+RUN npm i -D playwright && npm i -D @playwright/test && npm i -D @playwright/test allure-playwright && npm i -D allure-commandline
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
