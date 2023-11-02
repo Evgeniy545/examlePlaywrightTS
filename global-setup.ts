@@ -1,8 +1,6 @@
-import { chromium, expect, request } from '@playwright/test';
 import { FullConfig } from '@playwright/test';
 import { getToken } from './utilites/helpers';
 import { createStorageFile } from './utilites/helpers';
-import { NotAuth } from './pages/crm/not_auth';
 import * as fs from 'fs';
 import data from './.auth/data.json';
 
