@@ -15,7 +15,7 @@ import { LeadsNew } from '../../pages/crm/lead_new';
     await lead_new.gotoUrlUser('734576');
     await lead_new.fillInputBranchGro();
     await lead_new.buttonNext.click();
-    await expect(lead_new.headerBlockWho).toBeVisible;
+    expect(lead_new.headerBlockWho).toBeVisible;
 
     });
 

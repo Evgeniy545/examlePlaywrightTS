@@ -15,7 +15,7 @@ test('Check branch validate "+" lead', async ({ page }) => {
   const lead_new = new LeadsNew(page);
   await lead_new.gotoUrlUser('734576');
   await lead_new.buttonNext.click();
-  await expect(lead_new.inputError).toBeVisible;
+  expect(lead_new.inputError).toBeVisible;
   });
 
 

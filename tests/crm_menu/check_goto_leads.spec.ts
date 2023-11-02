@@ -1,4 +1,4 @@
-import { test, expect, request } from '@playwright/test';
+import { test, expect} from '@playwright/test';
 import { SidebarMenu } from '../../pages/crm/sidebar_menu';
 import { Leads } from '../../pages/crm/leads';
 

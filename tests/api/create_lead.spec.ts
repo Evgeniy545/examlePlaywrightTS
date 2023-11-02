@@ -9,7 +9,7 @@ import data6 from '../../data/status_in_progress.json';
 import data_storage_admin from '../../.auth/storage_etp_admin.json'; 
 import data_fl_user from '../../data/fl_user.json';
 
-test('Проверка мессаджей в очереди статусы "Зарегистрирована" и "Проверка комплктности документов"', async ({ page }) => {
+test('Проверка мессаджей в очереди статусы "Зарегистрирована" и "Проверка комплктности документов"', async ({}) => {
   const token = String(data_storage_admin.cookies[0].value);
   //console.log(token);
   const json = data1;
@@ -19,7 +19,7 @@ test('Проверка мессаджей в очереди статусы "За
   await updateStatusLead(lead_id, token, checkDocUpdateStatus);
   });
 
-test('Проверка мессаджей в очереди статус "Отложена" и "Недостающие докуметы предоставлены"', async ({ page }) => {
+test('Проверка мессаджей в очереди статус "Отложена" и "Недостающие докуметы предоставлены"', async ({}) => {
   const token = String(data_storage_admin.cookies[0].value);
   //console.log(token);
   const json = data1;
@@ -33,7 +33,7 @@ test('Проверка мессаджей в очереди статус "Отл
   await updateStatusLead(lead_id, token, documentsGivUpdateStatus);
 });
 
-test('Проверка мессаджей в очереди статус "Отказано в заключении договора"', async ({ page }) => {
+test('Проверка мессаджей в очереди статус "Отказано в заключении договора"', async ({}) => {
   const token = String(data_storage_admin.cookies[0].value);
   //console.log(token);
   const json = data1;
@@ -45,7 +45,7 @@ test('Проверка мессаджей в очереди статус "Отк
   await updateStatusLead(lead_id, token, deniedUpdateStatus);
 });
 
-test('Проверка мессаджей в очереди статус "Подготовка ТУ и заключение договора"', async ({ page }) => {
+test('Проверка мессаджей в очереди статус "Подготовка ТУ и заключение договора"', async ({}) => {
   const token = String(data_storage_admin.cookies[0].value);
   //console.log(token);
   const json = data1;

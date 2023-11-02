@@ -22,5 +22,5 @@ test('Check button "+" lead', async ({ page }) => {
   const leads = new Leads(page);
   await leads.clickButtonAdd();
   const leads_new = new LeadsNew(page);
-  await expect(page).toHaveURL(leads_new.URL);
+  expect(page).toHaveURL(leads_new.URL);
   });
