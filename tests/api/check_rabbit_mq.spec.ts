@@ -6,6 +6,7 @@ import data3 from '../../data/status_pending.json';
 import data4 from '../../data/status_documents_given.json';
 import data5 from '../../data/status_denied.json';
 import data6 from '../../data/status_in_progress.json';
+import data7 from '../../data/status_annulled.json';
 import data_storage_admin from '../../.auth/storage_etp_admin.json'; 
 import data_fl_user from '../../data/fl_user.json';
 
@@ -67,6 +68,8 @@ test('Проверка мессаджей в очереди статус "Анн
   console.log(lead_id);
   const checkDocUpdateStatus = data2;
   await updateStatusLead(lead_id, token, checkDocUpdateStatus);
-  //const update_userJson = data_fl_user;
-  //await updateUser('1222390', token, update_userJson);
+  const pendingUpdateStatus = data3;
+  await updateStatusLead(lead_id, token, pendingUpdateStatus);
+  const annulledStatus = data7;
+  await updateStatusLead(lead_id, token, annulledStatus);
   });
