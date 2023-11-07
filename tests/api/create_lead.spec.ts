@@ -58,3 +58,15 @@ test('Проверка мессаджей в очереди статус "Под
   const inProgressUpdateStatus = data6;
   await updateStatusLead(lead_id, token, inProgressUpdateStatus);
 });
+
+test('Проверка мессаджей в очереди статус "Аннулирована"', async ({}) => {
+  const token = String(data_storage_admin.cookies[0].value);
+  //console.log(token);
+  const json = data1;
+  const lead_id = await getLeadId('1222390', token, json);
+  console.log(lead_id);
+  const checkDocUpdateStatus = data2;
+  await updateStatusLead(lead_id, token, checkDocUpdateStatus);
+  //const update_userJson = data_fl_user;
+  //await updateUser('1222390', token, update_userJson);
+  });

@@ -4,12 +4,11 @@ node_modules/
 /playwright/.cache/
 package-lock.json
 package.json
-playwright.config.ts
 e2e/
 tests-examples/
 .env
 allure-results/
-.gitignore
+./.gitignore
 /test-results/
 /playwright-report/
 /playwright/.cache/
@@ -27,3 +26,4 @@ storage/
 /playwright-report/
 /playwright/.cache/
 .auth/
+/configs
