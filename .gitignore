@@ -4,6 +4,7 @@ node_modules/
 /playwright/.cache/
 package-lock.json
 package.json
+configs/playwright.config.ts
 e2e/
 tests-examples/
 .env
