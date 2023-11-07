@@ -1,8 +1,8 @@
 import { FullConfig } from '@playwright/test';
-import { getToken } from './utilites/helpers';
-import { createStorageFile } from './utilites/helpers';
+import { getToken } from '../utilites/helpers';
+import { createStorageFile } from '../utilites/helpers';
 import * as fs from 'fs';
-import data from './.auth/data.json';
+import data from './data.json';
 
 async function globalSetup(config: FullConfig) {
   for (var key in data) {

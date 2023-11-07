@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { MfcPage } from '../../pages/crm/mfc';
-import { test } from '../../fixtures'
+import { test } from '../../utilites/fixtures'
 
 test('Заголовок страницы МФЦ - МФЦ', async ({ etpAdminContext }) => {
   const wrapper = new MfcPage(await etpAdminContext.newPage());
