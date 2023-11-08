@@ -6,6 +6,7 @@ services:
       - ./configs:/usr/src/app/configs
       - ./tests:/usr/src/app/tests
       - ./pages:/usr/src/app/pages
+      - ./utilites:/usr/src/app/utilites
       - playwright-report:/usr/src/app/allure-report
       - playwright-result:/usr/src/app/allure-results
     networks:
