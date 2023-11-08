@@ -30,7 +30,7 @@ eslint:
   stage: linter
   needs: [start_pipeline]
   script:
-    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH} -c ./config/.eslintrc.json
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH} -c ./configs/.eslintrc.json
 
 playwright_test:
   <<: *default-rules
@@ -38,7 +38,7 @@ playwright_test:
   allow_failure: true
   needs: [eslint]
   script:
-    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS} --config=./config/playwright.config.ts
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS} --config=./configs/playwright.config.ts
 
 deploy:
   <<: *default-rules
