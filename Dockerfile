@@ -1,7 +1,7 @@
 FROM nexus.etpgpb.ru/playwright:v1.39.0-jammy
 WORKDIR /usr/src/app
 
-RUN apt-get update && apt-get install -y openjdk-8-jdk
+RUN rm /etc/apt/apt.conf.d/docker-clean && apt-get update && apt-get install -y openjdk-8-jdk
 RUN npm i -D playwright \
     && npm i -D @playwright/test \
     && npm i -D @playwright/test allure-playwright \
