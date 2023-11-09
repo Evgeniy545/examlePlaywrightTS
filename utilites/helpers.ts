@@ -23,7 +23,7 @@ export async function createStorageFile(key: string, token: string) {
     await context.addCookies([{ name: "token", value: token, path: '/', domain: '.etpgpb.ru' }]);
     const page = await context.newPage();
     await page.goto(URL + '/crm');
-    await page.context().storageState({ path: '.auth/storage_' + key + '.json' });
+    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
     await context.close();
 }
 
@@ -76,3 +76,110 @@ export async function updateUser(user_id: string, token: string, json: Record<st
     const res = await responce.json();
     return res;
 }
+
+export async function createContract(lead_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.post(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+        headers: {
+            'Authorization': token,
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+export async function updateContract(lead_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.patch(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+        headers: {
+            'Authorization': token,
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+
+export async function updateStatusContract(lead_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.put(URL + '/v1/admin/leads/' + lead_id + '/contract/update_status', {
+        headers: {
+            'Authorization': token,
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+
+export async function updateDatesContract(lead_id: string, token: string, json: Record<string, any>) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.put(URL + '/v1/admin/leads/' + lead_id + '/contract/update_dates', {
+        headers: {
+            'Authorization': token,
+        },
+        data: json,
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+
+export async function getListContracts(token: string) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.get(URL + '/v1/admin/contracts', {
+        headers: {
+            'Authorization': token,
+        },
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+export async function getContract(lead_id: string, token: string) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.get(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+        headers: {
+            'Authorization': token,
+        },
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+
+export async function deleteContract(lead_id: string, token: string) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.delete(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+        headers: {
+            'Authorization': token,
+        },
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+
+export async function getHistoryContract(lead_id: string, token: string) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.get(URL + '/v1/admin/leads/' + lead_id + '/contract/history', {
+        headers: {
+            'Authorization': token,
+        },
+        ignoreHTTPSErrors: true,
+
+    });
+    return responce;
+}
+

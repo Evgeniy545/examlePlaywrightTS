@@ -8,7 +8,7 @@ async function globalSetup(config: FullConfig) {
   for (var key in data) {
     //console.log(key);   
     try {
-      if (fs.existsSync('.auth/storage_' + key + '.json')) {
+      if (fs.existsSync('../.auth/storage_' + key + '.json')) {
           //file exists
       }
       else{
