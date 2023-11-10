@@ -8,7 +8,7 @@ services:
       - ./pages:/usr/src/app/pages
       - ./utilites:/usr/src/app/utilites
       - ./data:/usr/src/app/data
-      - ./.auth:/usr/src/app/.auth
+      - ./.auth:/usr/src/app/.auth:rw
       - playwright-report:/usr/src/app/allure-report
       - playwright-result:/usr/src/app/allure-results
     networks:
