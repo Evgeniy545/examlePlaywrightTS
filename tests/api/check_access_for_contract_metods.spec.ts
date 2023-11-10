@@ -8,7 +8,7 @@ test('Проверка доступа к методу получения спи�
     const token = String(data_storage_auditor.cookies[0].value);
     const res = await getListContracts(token);
     //console.log(await res.body());
-    expect(res).toBeOK();
+    await expect(res).toBeOK();
     const b = await res.json();
     console.log(b);
     expect(b).toHaveProperty('meta.total_pages');
@@ -39,7 +39,7 @@ test('Проверка доступа к методу получения одн�
     const token = String(data_storage_auditor.cookies[0].value);
     const res = await getContract('1500587', token);
     //console.log(await res.body());
-    expect(res).toBeOK();
+    await expect(res).toBeOK();
     const b = await res.json();
     console.log(b);
     expect(b).toHaveProperty('data.type', 'contract');
