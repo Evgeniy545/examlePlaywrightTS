@@ -20,7 +20,7 @@ services:
     environment:
       BASE_URL: ${BASE_URL}
     extra_hosts:
-    - "${BASE_URL}: 10.8.1.23"
+    - "${URL_NAME}: 10.8.1.23"
 volumes:
    playwright-result: {}
    playwright-report: {}
