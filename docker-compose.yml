@@ -19,8 +19,6 @@ services:
       - traefik.port=9323
     environment:
       BASE_URL: ${BASE_URL}
-    extra_hosts:
-    - "${URL_NAME}: 10.8.1.23"
 volumes:
    playwright-result: {}
    playwright-report: {}
