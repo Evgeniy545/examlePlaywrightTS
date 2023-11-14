@@ -12,7 +12,6 @@ export async function getToken(email: string, password: string) {
     });
     expect(responce.ok()).toBeTruthy();
     const res = await responce.json();
-
     return res.jwt;
 }
 
@@ -23,8 +22,10 @@ export async function createStorageFile(key: string, token: string) {
     await context.addCookies([{ name: "token", value: token, path: '/', domain: '.etpgpb.ru' }]);
     const page = await context.newPage();
     await page.goto(URL + '/crm');
-    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
+    await page.context().storageState({ path: './.auth/storage_' + key + '.json' });
+    await console.log(key);
     await context.close();
+
 }
 
 

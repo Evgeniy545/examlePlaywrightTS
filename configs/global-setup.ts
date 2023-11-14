@@ -5,24 +5,19 @@ import * as fs from 'fs';
 import data from './data.json';
 
 async function globalSetup(config: FullConfig) {
-  for (var key in data) {
-    //console.log(key);   
+  const roles = Object.keys(data)
+  for (const role of roles) {
+    //console.log(role);   
     try {
-      if (fs.existsSync('../.auth/storage_' + key + '.json')) {
-          //file exists
+      if (await fs.existsSync('../.auth/storage_' + role + '.json')) {
+        //file exists
+      } else {
+        const token = await getToken(String(data[role].login), String(data[role].password))
+        await createStorageFile(role, token);
       }
-      else{
-        const token = await getToken(String(data[key].login), String(data[key].password))
-        await createStorageFile(key, token);
-      }
-  } catch (err) {
-    console.log(err);
+    } catch (err) {
+      console.log(err);
+    }
   }
-    
-  }
-
-
 }
-
-
 export default globalSetup;
