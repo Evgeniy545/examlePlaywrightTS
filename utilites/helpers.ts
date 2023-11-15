@@ -18,9 +18,10 @@ export async function getToken(email: string, password: string) {
 export async function createStorageFile(key: string, token: string) {
     const URL = String(process.env.BASE_URL);
     const browser = await chromium.launch();
-    const context = await browser.newContext({ ignoreHTTPSErrors: true });
+    const context = await browser.newContext({ ignoreHTTPSErrors: true, serviceWorkers: 'block' });
     await context.addCookies([{ name: "token", value: token, path: '/', domain: '.etpgpb.ru' }]);
     const page = await context.newPage();
+    await context.route('**/tag.js', route => route.abort());    
     page.on('request', request => console.log('>>', request.method(), request.url()));
     page.on('response', response => console.log('<<', response.status(), response.url()));    
     await page.goto(URL + '/crm');    
