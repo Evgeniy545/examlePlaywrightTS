@@ -1,15 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { Analytics } from '../../pages/crm/analytics';
+import { Leads} from '../../pages/crm/leads';
 import { NotAuth } from '../../pages/crm/not_auth';
+import data_roles from '../../configs/data.json' 
 
-test.use({ storageState: 'storage/storageState1.json' });
+test.use({ storageState: { cookies: [], origins: [] } });
 
-test('Check Login', async ({ page }) => {
+test('Проверка авторизации под Администратором', async ({ page }) => {
   const notAuth = new NotAuth(page);
   await notAuth.goto();
-  await notAuth.checkFillInputLogin('y.dyurchek@etpgpb.ru');
-  await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
+  await notAuth.checkFillInputLogin(data_roles['etp_admin'].login);
+  await notAuth.checkFillinputPass(data_roles['etp_admin'].password);
   await notAuth.loginInCRM();
-  const analytics = new Analytics(page);
-  await expect(page).toHaveURL(analytics.URL);
+  const leads = new Leads(page);
+  await expect(page).toHaveURL(leads.URL);
 });

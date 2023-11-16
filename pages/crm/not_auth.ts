@@ -13,9 +13,9 @@ export class NotAuth {
     this.page = page;
     this.notAuthHeader = page.locator('h2', { hasText: 'Административная консоль портала Единого оператора газификации' });
     this.notAuthFormTitle = page.locator('div > .notAuth__formTitle');
-    this.inputLogin = page.locator('data-test=adminAuthLogin');
-    this.inputPass = page.locator('data-test=adminAuthPassword');
-    this.buttonSubmit = page.locator('data-test=adminAuthBtn');
+    this.inputLogin = page.locator('#sign_in_email');
+    this.inputPass = page.locator('#sign_in_password');
+    this.buttonSubmit = page.locator('button', { hasText: 'Войти'});
   }
 
   async goto() {
