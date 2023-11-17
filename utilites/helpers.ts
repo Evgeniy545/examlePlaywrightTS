@@ -21,11 +21,11 @@ export async function createStorageFile(key: string, token: string) {
     const context = await browser.newContext({ ignoreHTTPSErrors: true, serviceWorkers: 'block' });
     await context.addCookies([{ name: "token", value: token, path: '/', domain: '.etpgpb.ru' }]);
     const page = await context.newPage();
-    await page.route('**/*.js', route => route.abort());   
-    page.on('request', request => console.log('>>', request.method(), request.url()));
-    page.on('response', response => console.log('<<', response.status(), response.url()));    
+    await page.route('https://mc.yandex.ru/metrika/tag.js', route => route.abort());   
+    //page.on('request', request => console.log('>>', request.method(), request.url()));
+    //page.on('response', response => console.log('<<', response.status(), response.url()));    
     await page.goto(URL + '/crm');       
-    await page.context().storageState({ path: './.auth/storage_' + key + '.json' });
+    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
     await console.log(key);
     await context.close();
 
