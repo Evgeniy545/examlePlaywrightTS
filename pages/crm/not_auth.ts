@@ -20,6 +20,7 @@ export class NotAuth {
 
   async goto() {
     await this.page.goto('/crm/not_auth');
+    await this.page.route('https://mc.yandex.ru/metrika/tag.js', route => route.abort());
   }
 
   async checkFillInputLogin(login: string) {
