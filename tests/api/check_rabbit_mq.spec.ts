@@ -11,6 +11,8 @@ import data_body_contract from '../../data/body_contract.json';
 import data_storage_admin from '../../.auth/storage_etp_admin.json'; 
 import data_fl_user from '../../data/fl_user.json';
 
+test.describe('chromium only', () => {
+  test.skip(({ browserName }) => browserName !== 'chromium', 'Chromium only!');
 
 test('Проверка мессаджей в очереди статусы "Зарегистрирована" и "Проверка комплктности документов"', async ({}) => {
   const token = String(data_storage_admin.cookies[0].value);
@@ -92,3 +94,5 @@ test('Проверка мессаджей в очереди статус "Анн
     const contract_id = await createContract(lead_id, token, body_contract);
     console.log(contract_id); 
   });
+
+});

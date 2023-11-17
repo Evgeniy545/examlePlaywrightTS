@@ -4,6 +4,9 @@ import data_storage_auditor from '../../.auth/storage_auditor.json';
 import data_body_contract from '../../data/body_contract.json';
 import data_body_upd_date from '../../data/body_contract_upd_date.json'
 
+test.describe('chromium only', () => {
+    test.skip(({ browserName }) => browserName !== 'chromium', 'Chromium only!');
+
 test('Проверка доступа к методу получения списка договоров под ролью Аудитор', async ({ }) => {
     const token = String(data_storage_auditor.cookies[0].value);
     const res = await getListContracts(token);
@@ -82,3 +85,4 @@ test('Проверка отсутствия доступа к методу об�
     console.log(await res.json());
 });
 
+});
