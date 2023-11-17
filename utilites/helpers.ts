@@ -25,7 +25,7 @@ export async function createStorageFile(key: string, token: string) {
     //page.on('request', request => console.log('>>', request.method(), request.url()));
     //page.on('response', response => console.log('<<', response.status(), response.url()));    
     await page.goto(URL + '/crm');       
-    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
+    await page.context().storageState({ path: './.auth/storage_' + key + '.json' });
     await console.log(key);
     await context.close();
 
