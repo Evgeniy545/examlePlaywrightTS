@@ -7,7 +7,7 @@ RUN npm i -D playwright \
     && npm i -D @playwright/test allure-playwright \
     && npm i -D allure-commandline \
     && npm i -D eslint-plugin-playwright \
-    && npm i @typescript-eslint/eslint-plugin@latest --save-dev
+    && npm i @typescript-eslint/eslint-plugin@latest --save-dev \
     && npm i @faker-js/faker --save-dev
 
 COPY docker-entrypoint.sh /usr/local/bin/
