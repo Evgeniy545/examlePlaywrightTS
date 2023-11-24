@@ -13,6 +13,7 @@ test('Проверка авторизации под Администратор�
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под Администратором ГРО', async ({ page }) => {
@@ -23,6 +24,7 @@ test('Проверка авторизации под Администратор�
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под Оператором', async ({ page }) => {
@@ -33,6 +35,7 @@ test('Проверка авторизации под Оператором', asyn
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под ЕОГ', async ({ page }) => {
@@ -43,6 +46,7 @@ test('Проверка авторизации под ЕОГ', async ({ page }) =
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под Аудитором', async ({ page }) => {
@@ -53,6 +57,7 @@ test('Проверка авторизации под Аудитором', async 
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под МФЦ', async ({ page }) => {
@@ -63,6 +68,7 @@ test('Проверка авторизации под МФЦ', async ({ page }) =
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под АРШ', async ({ page }) => {
@@ -73,6 +79,7 @@ test('Проверка авторизации под АРШ', async ({ page }) =
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под Администратором МФЦ', async ({ page }) => {
@@ -83,6 +90,7 @@ test('Проверка авторизации под Администратор�
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 test('Проверка авторизации под Оператором МФЦ', async ({ page }) => {
@@ -93,6 +101,7 @@ test('Проверка авторизации под Оператором МФЦ
   await notAuth.loginInCRM();
   const leads = new Leads(page);
   await expect(page).toHaveURL(leads.URL,{timeout:10000});
+  await expect(leads.headerPage).toBeVisible();
 });
 
 
