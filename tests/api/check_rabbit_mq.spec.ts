@@ -1,24 +1,13 @@
 import { expect } from '@playwright/test'
 import { fixtures as test } from '../../utilites/fixtureApi';
-import data1 from '../../data/Lead.json';
-import { createContract, getLeadId, getRabbitMessages, updateStatusLead, updateUser } from '../../utilites/helpers';
 import data2 from '../../data/status_check_docements.json';
 import data3 from '../../data/status_pending.json';
 import data4 from '../../data/status_documents_given.json';
 import data5 from '../../data/status_denied.json';
 import data6 from '../../data/status_in_progress.json';
-import data7 from '../../data/status_annulled.json';
-import data_body_contract from '../../data/body_contract.json';
-import data_storage_admin_epgu from '../../.auth/storage_admin_epgu.json';
 import data_fl_user from '../../data/fl_user.json';
 import { getObjLead } from '../../utilites/leads_json';
 
-async function creatLeadConten() {
-  const token = String(data_storage_admin_epgu.cookies[0].value)
-  const json = await getObjLead();
-  const lead_id = await getLeadId(token, '1222390', json);
-  return lead_id;
-}
 
 test.describe("Проверка очередей в ЕПГУ и в КЦ", () => {
   let token: string;
