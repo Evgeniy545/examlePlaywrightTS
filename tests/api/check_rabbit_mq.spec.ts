@@ -40,7 +40,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
   test('Проверка мессаджей в очереди Аттачменты статусы "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.attachments', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.attachments_attributes[0].kind);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { attachments_attributes: { kind: any; }[]; }; }; }) => item.attributes.message.attachments_attributes[0].kind);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining(['consent_equity_owner', 'gas_flow', 'plan', 'title_documents', 'land', 'passport']));
   });
@@ -57,7 +57,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
   test('Проверка мессаджей в очереди ЕПГУ статусы "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.status);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: any; }; }; }) => item.attributes.message.status);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining(['registered']));
     expect(b).toEqual(expect.arrayContaining(['document_check']));
@@ -65,7 +65,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
   test('Проверка мессаджей в очереди ЕПГУ статусы "Отложена", "Недостающие документы предоставлены"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.status);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: any; }; }; }) => item.attributes.message.status);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining(['pending']));
     expect(b).toEqual(expect.arrayContaining(['documents_given']));
@@ -73,21 +73,21 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
   test('Проверка оргкодов 1001 1007 в мессаджах в очереди ЕПГУ для статусов "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.status+" "+item.attributes.message.org_code);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining([ 'document_check 1007', 'registered 1001' ]));
   });
   
   test('Проверка оргкодов 1014 1007 в мессаджах в очереди ЕПГУ для статусов "Отложена", "Недостающие документы предоставлены"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.status+" "+item.attributes.message.org_code);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining([ 'pending 1014', 'documents_given 1007' ]));
   });
 
   test('Проверка оргкодов 1007 1004 в мессаджах в очереди ЕПГУ для статусов "Отказано в заключении договора", "Подготовка ТУ и заключение договора"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
-    const b = (await getResRabMessage.json()).data.map((item: Record<string, any>) => item.attributes.message.status+" "+item.attributes.message.org_code);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining([ 'denied 1004', 'in_progress 1007' ]));
   });
