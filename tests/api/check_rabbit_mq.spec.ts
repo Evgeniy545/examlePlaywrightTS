@@ -40,7 +40,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
   test('Проверка мессаджей в очереди Аттачменты статусы "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.attachments', token);
-    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { attachments_attributes: { kind: any; }; }; }; }) => item.attributes.message.attachments_attributes[0].kind);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { attachments_attributes: { kind: string; }; }; }; }) => item.attributes.message.attachments_attributes[0].kind);
     console.log(b);
     expect(b).toEqual(expect.arrayContaining(['consent_equity_owner', 'gas_flow', 'plan', 'title_documents', 'land', 'passport']));
   });
