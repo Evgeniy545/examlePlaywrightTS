@@ -8,6 +8,8 @@ test.use({ storageState: { cookies: [], origins: [] } });
 test('Проверка авторизации под Администратором', async ({ page }) => {
   const notAuth = new NotAuth(page);
   await notAuth.goto();
+  page.on('request', request => console.log('>>', request.method(), request.url()));
+  page.on('response', response => console.log('<<', response.status(), response.url()));  
   await notAuth.checkFillInputLogin(data_roles['etp_admin'].login);
   await notAuth.checkFillinputPass(data_roles['etp_admin'].password);
   await notAuth.loginInCRM();
