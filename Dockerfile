@@ -1,4 +1,5 @@
-FROM nexus.etpgpb.ru/playwright:v1.39.0-jammy
+FROM mcr.microsoft.com/playwright:v1.39.0-jammy
+
 WORKDIR /usr/src/app
 
 RUN mkdir ./auth && apt-get update && apt-get install -y openjdk-8-jdk
