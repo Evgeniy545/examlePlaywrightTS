@@ -1,4 +1,4 @@
-FROM nexus.etpgpb.ru/playwright:v1.39.0-jammy
+FROM nexus.etpgpb.ru/playwright:v1.40.0-jammy
 
 WORKDIR /usr/src/app
 
