@@ -3,8 +3,9 @@ FROM nexus.etpgpb.ru/playwright:v1.39.0-jammy
 WORKDIR /usr/src/app
 
 RUN mkdir ./auth && apt-get update && apt-get install -y openjdk-8-jdk
-RUN npm set registry https://nexus.etpgpb.ru/repository/npmjs-proxy/ \
-    npm i -D playwright \
+RUN npm set registry https://nexus.etpgpb.ru/repository/npmjs-proxy/
+RUN npm get registry
+RUN npm i -D playwright \
     && npm i -D @playwright/test \
     && npm i -D @playwright/test allure-playwright \
     && npm i -D allure-commandline \
