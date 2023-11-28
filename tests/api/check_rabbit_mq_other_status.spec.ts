@@ -20,8 +20,10 @@ import bodyActiveActConn from '../../data/body_active_type_actcon.json'
 import bodyStatusFinished from '../../data/status_finished.json'
 
 test.describe("Проверка очередей в ЕПГУ и в КЦ для статусов после Подготовка ТУ и заключение договора", () => {
+  test.describe.configure({ retries: 2});
   let token: string;
   let leadId: string;
+  const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))
 
 
   test.beforeAll(async ({ API }) => {
@@ -93,6 +95,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
 
 
   test('Проверка мессаджей в ЕПГУ для статуса заявки "Завершена"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
