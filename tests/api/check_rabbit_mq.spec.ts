@@ -5,6 +5,7 @@ import data3 from '../../data/status_pending.json';
 import data4 from '../../data/status_documents_given.json';
 import data5 from '../../data/status_denied.json';
 import data6 from '../../data/status_in_progress.json';
+import data7 from '../../data/status_annulled.json';
 import data_fl_user from '../../data/fl_user.json';
 import { getObjLead } from '../../utilites/leads_json';
 
@@ -36,6 +37,9 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
     await API.putReq('/v1/admin/users/1222390', update_userJson, token);
     const inProgressUpdateStatus = data6;
     await API.putReq('/v1/admin/leads/' + leadId + '/update_status', inProgressUpdateStatus, token);
+    await API.putReq('/v1/admin/leads/' + leadId + '/update_status', checkDocUpdateStatus, token);
+    const annulledStatus = data7;
+    await API.putReq('/v1/admin/leads/' + leadId + '/update_status', annulledStatus, token);
   });
 
   test('Проверка мессаджей в очереди Аттачменты статусы "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
@@ -91,39 +95,13 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
     console.log(b);
     expect(b).toEqual(expect.arrayContaining([ 'denied 1004', 'in_progress 1007' ]));
   });
-})
 
-
-/*
-
-
-test('Проверка мессаджей в очереди статус "Аннулирована"', async ({}) => {
-  const token = String(data_storage_admin_epgu.cookies[0].value);
-  //console.log(token);
-  const json = data1;
-  const lead_id = await getLeadId('1222390', token, json);
-  console.log(lead_id);
-  const checkDocUpdateStatus = data2;
-  await updateStatusLead(lead_id, token, checkDocUpdateStatus);
-  const pendingUpdateStatus = data3;
-  await updateStatusLead(lead_id, token, pendingUpdateStatus);
-  const annulledStatus = data7;
-  await updateStatusLead(lead_id, token, annulledStatus);
+  test('Проверка оргкода в мессаджах в очереди ЕПГУ в статусе заявки "Аннулирована"', async ({ API }) => {
+    const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
+    const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
+    console.log(b);
+    expect(b).toEqual(expect.arrayContaining(['annulled 1084']));
   });
 
-  test('Проверка мессаджей в очереди статус "Реализация мероприятий по договору"', async ({}) => {
-    const token = String(data_storage_admin_epgu.cookies[0].value);
-    //console.log(token);
-    const json = data1;
-    const lead_id = await getLeadId('1222390', token, json);
-    console.log(lead_id);
-    const checkDocUpdateStatus = data2;
-    await updateStatusLead(lead_id, token, checkDocUpdateStatus);
-    const update_userJson = data_fl_user;
-    await updateUser('1222390', token, update_userJson);
-    const inProgressUpdateStatus = data6;
-    await updateStatusLead(lead_id, token, inProgressUpdateStatus);
-    const body_contract = data_body_contract;
-    const contract_id = await createContract(lead_id, token, body_contract);
-    console.log(contract_id); 
-  });*/
+
+})

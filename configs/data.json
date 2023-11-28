@@ -43,5 +43,10 @@
     "login": "tpsg.gpb+operator_mfc@gmail.com",
     "password": "y*n@cb9XIxZnWO8h",
     "role": "mfc_operator"
+  },
+  "admin_epgu": {
+    "login": "akonovalenko@rnds.pro",
+    "password": "y*n@cb9XIxZnWO8h",
+    "role": "etp_admin"
   }
 }
