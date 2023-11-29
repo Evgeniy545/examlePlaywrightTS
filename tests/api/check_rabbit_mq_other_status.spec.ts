@@ -19,8 +19,9 @@ import bodyActiveDatePG from '../../data/body_active_type_datepg.json'
 import bodyActiveActConn from '../../data/body_active_type_actcon.json'
 import bodyStatusFinished from '../../data/status_finished.json'
 
+
+test.describe.configure({ mode: 'serial' });
 test.describe("Проверка очередей в ЕПГУ и в КЦ для статусов после Подготовка ТУ и заключение договора", () => {
-  test.describe.configure({ mode: 'serial' });
   let token: string;
   let leadId: string;
   const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))
@@ -60,7 +61,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
     // Перевод заявки в статус Завершена
     await API.putReq('/v1/admin/leads/' + leadId + '/update_status', bodyStatusFinished, token);
   });
-
+  
   test('Проверка мессаджей в КЦ для статусов заявки "Выполнено подключение (Пуск газа)", "Завершена"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.coordinate_center', token);
     const b = JSON.stringify(await getResRabMessage.json());

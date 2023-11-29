@@ -9,9 +9,9 @@ import data7 from '../../data/status_annulled.json';
 import data_fl_user from '../../data/fl_user.json';
 import { getObjLead } from '../../utilites/leads_json';
 
-
+test.describe.configure({ mode: 'serial' });
 test.describe("Проверка очередей в ЕПГУ и в КЦ", () => {
-  test.describe.configure({ mode: 'serial' });
+  
   let token: string;
   let leadId: string;
   const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))
