@@ -12,8 +12,8 @@ private async makeRequest(endpoint:string, method: string, reqBody?:object, toke
         headers: token ? {'Authorization': 'Bearer '+token } :{},
         data: reqBody,
     });
-    //console.log(res);
-    //console.log('----------------------------');
+    console.log(res);
+    console.log('----------------------------');
     return res;
 }
 
