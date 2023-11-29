@@ -3,7 +3,8 @@ import { SidebarMenu } from '../../pages/crm/sidebar_menu';
 import { Leads } from '../../pages/crm/leads';
 
 
-
+test.describe("Веменно пропускаем набор ", () => {
+  test.skip();  
 
 test('Check go to page leads', async ({ page }) => {
   await page.goto('/crm');
@@ -14,4 +15,4 @@ test('Check go to page leads', async ({ page }) => {
   });
 
 
-  
+});

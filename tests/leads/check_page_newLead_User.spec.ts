@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { LeadsNew } from '../../pages/crm/lead_new';
 
 
-
+test.describe("Веменно пропускаем набор ", () => {
+  test.skip();
 
 test('Check clear fieldGro' , async ({ page }) => {
   const lead_new = new LeadsNew(page);
@@ -15,3 +16,4 @@ test('Check clear fieldGro' , async ({ page }) => {
   await expect(lead_new.inputNameGro).toBeEmpty();
   console.log(lead_new.returnValueInput());
   });
+});

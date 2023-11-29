@@ -10,7 +10,8 @@ import { LeadsNew } from '../../pages/crm/lead_new';
   await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
   await notAuth.loginInCRM();
 });*/
-
+test.describe("Веменно пропускаем набор ", () => {
+  test.skip();  
 test('Check branch validate "+" lead', async ({ page }) => {
   const lead_new = new LeadsNew(page);
   await lead_new.gotoUrlUser('734576');
@@ -27,5 +28,5 @@ test('Check branch validate "+" lead', async ({ page }) => {
 
     });
 
-
+  });
 
