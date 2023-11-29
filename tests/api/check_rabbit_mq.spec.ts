@@ -8,7 +8,7 @@ import data6 from '../../data/status_in_progress.json';
 import data7 from '../../data/status_annulled.json';
 import data_fl_user from '../../data/fl_user.json';
 import { getObjLead } from '../../utilites/leads_json';
-
+import storageEPGUAdmin from '../../.auth/storage_admin_epgu.json'
 test.describe.configure({ mode: 'serial' });
 test.describe("Проверка очередей в ЕПГУ и в КЦ", () => {
   
@@ -18,9 +18,10 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
 
 
   test.beforeAll(async ({ API }) => {
-    const res = await API.postReq('/v1/admin/token',
+    /*const res = await API.postReq('/v1/admin/token',
       { "auth": { "email": "akonovalenko@rnds.pro", "password": "y*n@cb9XIxZnWO8h" } });
-    token = (await res.json()).jwt;
+    token = (await res.json()).jwt;*/
+    token = String(storageEPGUAdmin.cookies[0].value);
     console.log(token);
     const json = await getObjLead();
     const resLead = await API.postReq('/v1/admin/users/1222390/leads', json, token);

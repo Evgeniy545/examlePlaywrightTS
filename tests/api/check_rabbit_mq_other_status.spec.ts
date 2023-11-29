@@ -18,6 +18,7 @@ import bodyActivePG from '../../data/body_active_type_pg.json'
 import bodyActiveDatePG from '../../data/body_active_type_datepg.json'
 import bodyActiveActConn from '../../data/body_active_type_actcon.json'
 import bodyStatusFinished from '../../data/status_finished.json'
+import storageEPGUAdmin from '../../.auth/storage_admin_epgu.json'
 
 
 test.describe.configure({ mode: 'serial' });
@@ -28,9 +29,9 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
 
 
   test.beforeAll(async ({ API }) => {
-    const res = await API.postReq('/v1/admin/token',
-      { "auth": { "email": "akonovalenko@rnds.pro", "password": "y*n@cb9XIxZnWO8h" } });
-    token = (await res.json()).jwt;
+    /*const res = await API.postReq('/v1/admin/token',
+      { "auth": { "email": "akonovalenko@rnds.pro", "password": "y*n@cb9XIxZnWO8h" } });*/
+    token = String(storageEPGUAdmin.cookies[0].value);
     console.log(token);
     const json = await getObjLead();
     const resLead = await API.postReq('/v1/admin/users/1222390/leads', json, token);
