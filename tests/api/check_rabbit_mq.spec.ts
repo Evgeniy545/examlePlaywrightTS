@@ -61,6 +61,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
   });
 
   test('Проверка мессаджей в очереди ЕПГУ статусы "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; }; }; }) => item.attributes.message.status);
     console.log(b);
@@ -69,6 +70,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
   });
 
   test('Проверка мессаджей в очереди ЕПГУ статусы "Отложена", "Недостающие документы предоставлены"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; }; }; }) => item.attributes.message.status);
     console.log(b);
@@ -77,6 +79,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
   });
 
   test('Проверка оргкодов 1001 1007 в мессаджах в очереди ЕПГУ для статусов "Зарегистрирована", "Проверка комплектности документов"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
@@ -84,6 +87,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
   });
   
   test('Проверка оргкодов 1014 1007 в мессаджах в очереди ЕПГУ для статусов "Отложена", "Недостающие документы предоставлены"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
@@ -91,6 +95,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ", () => 
   });
 
   test('Проверка оргкодов 1007 1004 в мессаджах в очереди ЕПГУ для статусов "Отказано в заключении договора", "Подготовка ТУ и заключение договора"', async ({ API }) => {
+    delay(1000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
     console.log(b);
