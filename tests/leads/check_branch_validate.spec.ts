@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 import { LeadsNew } from '../../pages/crm/lead_new';
 
 
@@ -9,7 +9,7 @@ import { LeadsNew } from '../../pages/crm/lead_new';
   await notAuth.checkFillInputLogin('y.dyurchek@etpgpb.ru');
   await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
   await notAuth.loginInCRM();
-});*/
+});
 test.describe("Веменно пропускаем набор ", () => {
   test.skip();  
 test('Check branch validate "+" lead', async ({ page }) => {
@@ -30,3 +30,4 @@ test('Check branch validate "+" lead', async ({ page }) => {
 
   });
 
+*/

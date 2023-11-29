@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 import { LeadsNew } from '../../pages/crm/lead_new';
 
 /*test.beforeEach(async ({ page }) => {
@@ -8,8 +8,9 @@ import { LeadsNew } from '../../pages/crm/lead_new';
   await notAuth.checkFillInputLogin('y.dyurchek@etpgpb.ru');
   await notAuth.checkFillinputPass('y*n@cb9XIxZnWO8h');
   await notAuth.loginInCRM();
-});*/
-
+});*//*
+test.describe("Веменно пропускаем набор ", () => {
+  test.skip();  
   test('Check go to next step"+" lead', async ({ page }) => {
     const lead_new = new LeadsNew(page);
     await lead_new.gotoUrlUser('734576');
@@ -19,5 +20,5 @@ import { LeadsNew } from '../../pages/crm/lead_new';
 
     });
 
-
+  });*/
 

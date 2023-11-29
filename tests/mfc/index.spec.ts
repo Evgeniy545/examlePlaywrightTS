@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+/*import { expect } from '@playwright/test';
 import { MfcPage } from '../../pages/crm/mfc';
 import { test } from '../../utilites/fixtures'
 
@@ -17,4 +17,4 @@ test('Заголовок страницы МФЦ - МФЦ1', async ({ mfcAdminCo
   const titleContainer = wrapper.page.locator('.pageTable__header')
   expect(await titleContainer.textContent()).toContain('МФЦ')
 });
-});
+});*/

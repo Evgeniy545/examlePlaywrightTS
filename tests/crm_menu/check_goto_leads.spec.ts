@@ -1,8 +1,8 @@
-import { test, expect} from '@playwright/test';
+/*import { test, expect} from '@playwright/test';
 import { SidebarMenu } from '../../pages/crm/sidebar_menu';
 import { Leads } from '../../pages/crm/leads';
 
-
+/*
 test.describe("Веменно пропускаем набор ", () => {
   test.skip();  
 
@@ -15,4 +15,4 @@ test('Check go to page leads', async ({ page }) => {
   });
 
 
-});
+});*/
