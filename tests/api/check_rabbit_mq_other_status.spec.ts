@@ -21,7 +21,6 @@ import bodyStatusFinished from '../../data/status_finished.json'
 import storageEPGUAdmin from '../../.auth/storage_admin_epgu.json'
 
 
-test.describe.configure({ mode: 'serial' });
 test.describe("Проверка очередей в ЕПГУ и в КЦ для статусов после Подготовка ТУ и заключение договора", () => {
   let token: string;
   let leadId: string;

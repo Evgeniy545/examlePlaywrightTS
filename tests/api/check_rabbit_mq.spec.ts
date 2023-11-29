@@ -9,7 +9,8 @@ import data7 from '../../data/status_annulled.json';
 import data_fl_user from '../../data/fl_user.json';
 import { getObjLead } from '../../utilites/leads_json';
 import storageEPGUAdmin from '../../.auth/storage_admin_epgu.json'
-test.describe.configure({ mode: 'serial' });
+
+
 test.describe("Проверка очередей в ЕПГУ и в КЦ", () => {
   
   let token: string;
