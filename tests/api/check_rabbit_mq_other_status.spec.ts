@@ -20,6 +20,7 @@ import bodyActiveActConn from '../../data/body_active_type_actcon.json'
 import bodyStatusFinished from '../../data/status_finished.json'
 
 test.describe("Проверка очередей в ЕПГУ и в КЦ для статусов после Подготовка ТУ и заключение договора", () => {
+  test.describe.configure({ mode: 'serial' });
   let token: string;
   let leadId: string;
   const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))

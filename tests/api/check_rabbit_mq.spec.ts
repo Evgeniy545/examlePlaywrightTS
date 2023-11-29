@@ -11,6 +11,7 @@ import { getObjLead } from '../../utilites/leads_json';
 
 
 test.describe("Проверка очередей в ЕПГУ и в КЦ", () => {
+  test.describe.configure({ mode: 'serial' });
   let token: string;
   let leadId: string;
   const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))
