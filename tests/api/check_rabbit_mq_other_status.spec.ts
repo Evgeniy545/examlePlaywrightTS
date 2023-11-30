@@ -25,7 +25,8 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
   let token: string;
   let leadId: string;
   const delay = (ms: number | undefined) => new Promise(resolve => setTimeout(resolve, ms))
-
+  test.describe.configure({mode:"serial"});
+   
 
   test.beforeAll(async ({ API }) => {
     /*const res = await API.postReq('/v1/admin/token',
