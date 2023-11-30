@@ -63,7 +63,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
     await API.putReq('/v1/admin/leads/' + leadId + '/update_status', bodyStatusFinished, token);
   });
   
-  test('Проверка мессаджей в КЦ для статусов заявки "Выполнено подключение (Пуск газа)", "Завершена"', async ({ API }) => {
+  test('(1)Проверка мессаджей в КЦ для статусов заявки "Выполнено подключение (Пуск газа)", "Завершена"', async ({ API }) => {
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.coordinate_center', token);
     const b = JSON.stringify(await getResRabMessage.json());
     expect(b).toMatch('"Статус ЕОГ":"Завершена"');
@@ -72,7 +72,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
     expect(b).toMatch('"Статус ЕОГ":"Реализация мероприятия по договору"');
   });
 
-  test('Проверка мессаджей и оргкодов в ЕПГУ для статусов контракта "Подготовка оферты", "Подписание заявителем"', async ({ API }) => {
+  test('(2)Проверка мессаджей и оргкодов в ЕПГУ для статусов контракта "Подготовка оферты", "Подписание заявителем"', async ({ API }) => {
     await delay(2000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
@@ -80,7 +80,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
     expect(b).toEqual(expect.arrayContaining(['in_progress 1019', 'in_progress 1107']));
   });
 
-  test('Проверка мессаджей в ЕПГУ для статусов заявки "Реализация мероприятий по договору", "Выполнение фактического присоединения"', async ({ API }) => {
+  test('(3)Проверка мессаджей в ЕПГУ для статусов заявки "Реализация мероприятий по договору", "Выполнение фактического присоединения"', async ({ API }) => {
     await delay(2000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
@@ -90,7 +90,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
 
   
 
-  test('Проверка мессаджей в ЕПГУ для статусов заявки "Выполнено подключение (Пуск газа)"', async ({ API }) => {
+  test('(4)Проверка мессаджей в ЕПГУ для статусов заявки "Выполнено подключение (Пуск газа)"', async ({ API }) => {
     await delay(2000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
@@ -99,7 +99,7 @@ test.describe("Проверка очередей в ЕПГУ и в КЦ для �
   });
 
 
-  test('Проверка мессаджей в ЕПГУ для статуса заявки "Завершена"', async ({ API }) => {
+  test('(5)Проверка мессаджей в ЕПГУ для статуса заявки "Завершена"', async ({ API }) => {
     await delay(2000);
     const getResRabMessage = await API.getReq('/v1/admin/rabbit_messages?messageable_type=Lead&messageable_id=' + leadId + '&queue_name=leads.epgu', token);
     const b = (await getResRabMessage.json()).data.map((item: { attributes: { message: { status: string; org_code: string; }; }; }) => item.attributes.message.status+" "+item.attributes.message.org_code);
