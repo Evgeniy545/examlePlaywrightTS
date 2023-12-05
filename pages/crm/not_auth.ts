@@ -19,8 +19,7 @@ export class NotAuth {
   }
 
   async goto() {
-    await this.page.goto('/crm/not_auth');
-    await this.page.route('**/*.js', route => route.abort());        
+    await this.page.goto('/crm/not_auth');        
   }
 
   async checkFillInputLogin(login: string) {
@@ -35,7 +34,7 @@ export class NotAuth {
   }
   async loginInCRM() {
     await expect(this.buttonSubmit).toHaveText('Войти');
-    await this.buttonSubmit.click();
+    await this.buttonSubmit.click();   
   }
 
 }
