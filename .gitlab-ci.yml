@@ -72,6 +72,6 @@ build_image:
   stage: build
   when: manual
   script:
-    - docker build -t $PLAYWRIGHT_IMAGE_NAME .
+    - docker build -t $PLAYWRIGHT_IMAGE_NAME --add-host=harbor.connectgas.ru:10.154.15.254 .
     - docker login -u $DOCKER_REGISTRY_LOGIN -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
     - docker push $PLAYWRIGHT_IMAGE_NAME
