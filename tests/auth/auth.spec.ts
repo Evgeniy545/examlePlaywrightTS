@@ -9,7 +9,9 @@ test('Проверка авторизации под Администратор�
   const notAuth = new NotAuth(page);
   page.on('request', request => console.log('>>', request.method(), request.url()));
   page.on('response', response => console.log('<<', response.status(), response.url()));
-  await page.route('*/tag.js', route => route.abort()); 
+  await page.route('*/tag.js', route => route.abort());
+  await page.route('*/code.js', route => route.abort());
+  await page.route('**/*.woff2', route => route.abort());
   await notAuth.goto(); 
   await notAuth.checkFillInputLogin(data_roles['etp_admin'].login);
   await notAuth.checkFillinputPass(data_roles['etp_admin'].password);
