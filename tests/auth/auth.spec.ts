@@ -2,16 +2,21 @@ import { test, expect } from '@playwright/test';
 import { Leads} from '../../pages/crm/leads';
 import { NotAuth } from '../../pages/crm/not_auth';
 import data_roles from '../../configs/data.json' 
+import { url } from 'inspector';
 
 test.use({ storageState: { cookies: [], origins: [] } });
+
+test.beforeEach(async({context}) =>{
+  await context.route('**/mc.yandex.ru/**', route => route.abort());
+  await context.route('**/www.google-analytics.com/**', route => route.abort());
+  await context.route('**/vk.com/**', route => route.abort());
+  await context.route('**/www.googletagmanager.com/**', route => route.abort());
+});
 
 test('Проверка авторизации под Администратором', async ({ page }) => {
   const notAuth = new NotAuth(page);
   page.on('request', request => console.log('>>', request.method(), request.url()));
   page.on('response', response => console.log('<<', response.status(), response.url()));
-  await page.route('*/tag.js', route => route.abort());
-  await page.route('*/code.js', route => route.abort());
-  await page.route('**/*.woff2', route => route.abort());
   await notAuth.goto(); 
   await notAuth.checkFillInputLogin(data_roles['etp_admin'].login);
   await notAuth.checkFillinputPass(data_roles['etp_admin'].password);
