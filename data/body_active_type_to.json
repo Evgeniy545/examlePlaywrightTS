@@ -1,0 +1,1 @@
+{"data":{"type":"activity","attributes":{"plan_date":null,"fact_date":"2023-11-28","finished":true},"relationships":{"activity_type":{"data":{"type":"activity_type","id":"28"}},"attachments":[]}}}
