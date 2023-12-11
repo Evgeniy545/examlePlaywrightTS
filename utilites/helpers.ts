@@ -3,9 +3,8 @@ import { chromium, expect, request } from '@playwright/test';
 
 
 export async function getToken(email: string, password: string) {
-    const URL = String(process.env.BASE_URL);
     const requestContext = await request.newContext();
-    const responce = await requestContext.post(URL + '/v1/admin/token', {
+    const responce = await requestContext.post(process.env.BASE_URL + '/v1/admin/token', {
         data: { "auth": { email, password } },
         ignoreHTTPSErrors: true,
 
@@ -16,26 +15,27 @@ export async function getToken(email: string, password: string) {
 }
 
 export async function createStorageFile(key: string, token: string) {
-    const URL = String(process.env.BASE_URL);
     const browser = await chromium.launch();
     const context = await browser.newContext({ ignoreHTTPSErrors: true, serviceWorkers: 'block' });
     await context.addCookies([{ name: "token", value: token, path: '/', domain: '.etpgpb.ru' }]);
     const page = await context.newPage();
-    await page.route('https://mc.yandex.ru/metrika/tag.js', route => route.abort());   
+    await context.route('**/mc.yandex.ru/**', route => route.abort());
+    await context.route('**/www.google-analytics.com/**', route => route.abort());
+    await context.route('**/vk.com/**', route => route.abort());
+    await context.route('**/www.googletagmanager.com/**', route => route.abort());
     //page.on('request', request => console.log('>>', request.method(), request.url()));
     //page.on('response', response => console.log('<<', response.status(), response.url()));    
-    await page.goto(URL + '/crm');       
-    await page.context().storageState({ path: './.auth/storage_' + key + '.json' });
+    await page.goto(process.env.BASE_URL + '/crm');
+    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
     await console.log(key);
     await context.close();
 
 }
 
 
-export async function getLeadId(user_id: string, token: string, json: Record<string, any>) {
-    const URL = String(process.env.BASE_URL);
+export async function getLeadId(token: string, user_id: string, json: Record<string, any>) {
     const requestContext = await request.newContext();
-    const responce = await requestContext.post(URL + '/v1/admin/users/' + user_id + '/leads', {
+    const responce = await requestContext.post(process.env.BASE_URL + '/v1/admin/users/' + user_id + '/leads', {
         headers: {
             'Authorization': token,
         },
@@ -43,15 +43,16 @@ export async function getLeadId(user_id: string, token: string, json: Record<str
         ignoreHTTPSErrors: true,
 
     });
+    console.log(await responce.json());
     expect(responce.ok()).toBeTruthy();
     const res = await responce.json();
+
     return res.data.id;
 }
 
-export async function updateStatusLead(lead_id: string, token: string, json: Record<string, any>) {
-    const URL = String(process.env.BASE_URL);
+export async function updateStatusLead(token: string, lead_id: string, json: Record<string, any>) {
     const requestContext = await request.newContext();
-    const responce = await requestContext.put(URL + '/v1/admin/leads/' + lead_id + '/update_status', {
+    const responce = await requestContext.put(process.env.BASE_URL + '/v1/admin/leads/' + lead_id + '/update_status', {
         headers: {
             'Authorization': token,
         },
@@ -82,9 +83,8 @@ export async function updateUser(user_id: string, token: string, json: Record<st
 }
 
 export async function createContract(lead_id: string, token: string, json: Record<string, any>) {
-    const URL = String(process.env.BASE_URL);
     const requestContext = await request.newContext();
-    const responce = await requestContext.post(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+    const responce = await requestContext.post(process.env.BASE_URL + '/v1/admin/leads/' + lead_id + '/contract', {
         headers: {
             'Authorization': token,
         },
@@ -95,9 +95,8 @@ export async function createContract(lead_id: string, token: string, json: Recor
     return responce;
 }
 export async function updateContract(lead_id: string, token: string, json: Record<string, any>) {
-    const URL = String(process.env.BASE_URL);
     const requestContext = await request.newContext();
-    const responce = await requestContext.patch(URL + '/v1/admin/leads/' + lead_id + '/contract', {
+    const responce = await requestContext.patch(process.env.BASE_URL + '/v1/admin/leads/' + lead_id + '/contract', {
         headers: {
             'Authorization': token,
         },
@@ -137,9 +136,10 @@ export async function updateDatesContract(lead_id: string, token: string, json: 
 }
 
 export async function getListContracts(token: string) {
-    const URL = String(process.env.BASE_URL);
+    process.env.BASE_URL;
+    console.log(process.env.BASE_URL);
     const requestContext = await request.newContext();
-    const responce = await requestContext.get(URL + '/v1/admin/contracts', {
+    const responce = await requestContext.get(process.env.BASE_URL + '/v1/admin/contracts', {
         headers: {
             'Authorization': token,
         },
@@ -185,5 +185,21 @@ export async function getHistoryContract(lead_id: string, token: string) {
 
     });
     return responce;
+}
+
+export async function getRabbitMessages(token: string, messageable_type?: string, messagible_id?: string, queue_name?: string) {
+    const URL = String(process.env.BASE_URL);
+    const requestContext = await request.newContext();
+    const responce = await requestContext.get(URL + '/v1/admin/rabbit_messages?messageable_type=' + messageable_type + '&messageable_id=' + messagible_id + '&queue_name=' + queue_name, {
+        headers: {
+            'Authorization': token,
+        },
+        ignoreHTTPSErrors: true,
+
+    });
+    console.log(responce.url());
+    const b = await responce.json();
+    console.log(b);
+    return b;
 }
 
