@@ -30,7 +30,8 @@ eslint:
   stage: linter
   needs: [start_pipeline]
   script:
-    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH}
+    - URL_NAME=`echo $BASE_URL | sed -E -e 's/https:\/\/|http:\/\///g'` && export URL_NAME
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright  npx eslint ${TEST_PATH} -c ./configs/.eslintrc.json
 
 playwright_test:
   <<: *default-rules
@@ -38,7 +39,8 @@ playwright_test:
   allow_failure: true
   needs: [eslint]
   script:
-    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS}
+    - URL_NAME=`echo $BASE_URL | sed -E -e 's/https:\/\/|http:\/\///g'` && export URL_NAME
+    - docker-compose --project-name ${CI_COMMIT_REF_NAME} run playwright npx playwright test ${TEST_PATH} --workers ${WORKERS} --config=./configs/playwright.config.ts
 
 deploy:
   <<: *default-rules
@@ -49,6 +51,7 @@ deploy:
   stage: deploy
   needs: [playwright_test]
   script:
+    - URL_NAME=`echo $BASE_URL | sed -E -e 's/https:\/\/|http:\/\///g'` && export URL_NAME
     - docker-compose --project-name ${CI_COMMIT_REF_NAME} -f docker-compose.yml up -d --force-recreate
 
 clean_env:
@@ -69,6 +72,6 @@ build_image:
   stage: build
   when: manual
   script:
-    - docker build -t $PLAYWRIGHT_IMAGE_NAME .
+    - docker build -t $PLAYWRIGHT_IMAGE_NAME --add-host=harbor.connectgas.ru:10.154.15.254 .
     - docker login -u $DOCKER_REGISTRY_LOGIN -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
     - docker push $PLAYWRIGHT_IMAGE_NAME

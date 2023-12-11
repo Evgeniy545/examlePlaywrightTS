@@ -1,23 +1,26 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
-
+//import dotenv from 'dotenv';
+//import { defineConfig } from '@playwright/test';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
-
+//dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  globalSetup: require.resolve('./global-setup'),
+  testDir: './../tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   expect: {
 
     timeout: 5000
   },
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,6 +32,8 @@ const config: PlaywrightTestConfig = {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['line'], ['allure-playwright']],  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    //navigationTimeout: 60 * 1000,
+    //storageState: 'storage/storageState2.json',
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     screenshot: 'only-on-failure',
     actionTimeout: 0,
@@ -37,12 +42,14 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
+      testIgnore: '*api/*.spec.ts',
       use: {
         ...devices['Desktop Chrome'],
       },
@@ -50,16 +57,22 @@ const config: PlaywrightTestConfig = {
 
     {
       name: 'firefox',
+      testIgnore: '*api/*.spec.ts',
       use: {
         ...devices['Desktop Firefox'],
       },
-    },
-
+    },    
     {
       name: 'webkit',
+      testIgnore: '*api/*.spec.ts',
       use: {
         ...devices['Desktop Safari'],
       },
+    },
+    {
+      name: 'api',
+      testMatch: '*api/*.spec.ts',
+
     },
 
     /* Test against mobile viewports. */
@@ -100,5 +113,4 @@ const config: PlaywrightTestConfig = {
   //   port: 3000,
   // },
 };
-
 export default config;

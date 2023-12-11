@@ -3,10 +3,11 @@ services:
   playwright:
     image: ${PLAYWRIGHT_IMAGE_NAME}
     volumes:
-      - ./playwright.config.ts:/usr/src/app/playwright.config.ts:ro
+      - ./configs:/usr/src/app/configs
       - ./tests:/usr/src/app/tests
       - ./pages:/usr/src/app/pages
-      - ./.eslintrc.json:/usr/src/app/.eslintrc.json:ro
+      - ./utilites:/usr/src/app/utilites
+      - ./data:/usr/src/app/data
       - playwright-report:/usr/src/app/allure-report
       - playwright-result:/usr/src/app/allure-results
     networks:
