@@ -26,7 +26,7 @@ export async function createStorageFile(key: string, token: string) {
     //page.on('request', request => console.log('>>', request.method(), request.url()));
     //page.on('response', response => console.log('<<', response.status(), response.url()));    
     await page.goto(process.env.BASE_URL + '/crm');
-    await page.context().storageState({ path: '../.auth/storage_' + key + '.json' });
+    await page.context().storageState({ path: './.auth/storage_' + key + '.json' }); //если запускаем из IDE, path смотрит отнсоительно корня проекта(если запускаем командой, то path относительно файла конфига)  
     await console.log(key);
     await context.close();
 
