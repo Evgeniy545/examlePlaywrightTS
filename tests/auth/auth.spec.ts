@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { Leads} from '../../pages/crm/leads';
 import { NotAuth } from '../../pages/crm/not_auth';
 import data_roles from '../../configs/data.json' 
-import { url } from 'inspector';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
