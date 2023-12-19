@@ -1,10 +1,13 @@
 import { test as base, BrowserContext } from '@playwright/test';
 
 export * from '@playwright/test';
+
 export const test = base.extend<{ etpAdminContext: BrowserContext; seniorManagerContext: BrowserContext; mfcAdminContext: BrowserContext; auditorContext: BrowserContext; eogContext: BrowserContext; regionalHeadContext: BrowserContext; mfcOperatorContext: BrowserContext; operatorContext: BrowserContext; mfcContext: BrowserContext; }>({
   etpAdminContext: async ({ browser }, use) => {
     const etpAdminContext = await browser.newContext({ storageState: `./.auth/storage_etp_admin.json` });
     await use(etpAdminContext);
+    await etpAdminContext.route('**/mc.yandex.ru/**', route => route.abort());
+    await etpAdminContext.route('**/*.com/**', route => route.abort());
     await etpAdminContext.close();
   },
   auditorContext: async ({ browser }, use) => {
