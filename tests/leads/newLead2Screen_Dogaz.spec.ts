@@ -5,7 +5,7 @@ import { test } from '../../utilites/fixtures';
 
 
 test.describe('Проверка элементов второго шага(экрана) заявки на догазификацию', () => {
-let lead_new:any;
+let lead_new;
 
 test.beforeEach(async({etpAdminContext})=>{
   lead_new = new LeadsNew(await etpAdminContext.newPage());
@@ -20,10 +20,10 @@ test('Проверка заголовка второго шага', async () => 
 });
 
 test('Проверка названия полей второго шага формы и их видимости', async () => {
-  expect(await lead_new.returnRadioButton('Заявитель')).toBeChecked();
+  await expect(await lead_new.returnRadioButton('Заявитель')).toBeChecked();
   expect(await lead_new.returnRadioButtonStateChecked('Уполномоченный представитель')).toBeFalsy();
   await lead_new.chooseRadioButtonList('Уполномоченный представитель');
-  expect(await lead_new.returnRadioButton('Уполномоченный представитель')).toBeChecked();
+  await expect(await lead_new.returnRadioButton('Уполномоченный представитель')).toBeChecked();
   expect(await lead_new.returnRadioButtonStateChecked('Заявитель')).toBeFalsy();
 });
 

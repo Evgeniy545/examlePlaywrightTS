@@ -5,7 +5,7 @@ import { test } from '../../utilites/fixtures';
 
 
 test.describe('Проверка элементов первого шага(экрана) заявки на догазификацию', () => {
-let lead_new:any;
+let lead_new;
 
 test.beforeEach(async({etpAdminContext})=>{
   lead_new = new LeadsNew(await etpAdminContext.newPage());

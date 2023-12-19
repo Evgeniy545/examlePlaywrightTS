@@ -1,11 +1,10 @@
-import { expect } from '@playwright/test';
 import { LeadsNew } from '../../pages/crm/lead_new';
 import { test } from '../../utilites/fixtures';
 
 
 
 test.describe('Проверка элементов третьего шага(экрана) заявки на догазификацию', () => {
-let lead_new:any;
+let lead_new;
 
 test.beforeEach(async({etpAdminContext})=>{
   lead_new = new LeadsNew(await etpAdminContext.newPage());
