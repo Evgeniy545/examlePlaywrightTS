@@ -7,12 +7,12 @@ export class LeadsNew {
   readonly id_user: string;
 
   // форма поиска и выбора заявителя 
-  readonly buttonBack: Locator;
+  readonly buttonBackInLeads:Locator;
   readonly buttonContinue: Locator;
   readonly headerNewLead: Locator;
   readonly labelInputAplicant: Locator;
   
-   // форма создания заявки на догазификацию
+   // форма создания заявки на догазификацию 
   readonly inputNameGro: Locator;
   readonly labelNameGro: Locator;
   readonly buttonClearNameGro: Locator;
@@ -28,7 +28,7 @@ export class LeadsNew {
 
    // блок "Кто обращается за услугой"
   readonly headerBlockWho: Locator;
-
+  readonly buttonBack: Locator;
 
   // блок "Информация о заявителе"
   readonly headerBlockAplicant: Locator;
@@ -150,32 +150,32 @@ export class LeadsNew {
     this.URL = 'crm/leads/new';
     this.id_user = '';
     // форма поиска и выбора заявителя
-    this.buttonBack = page.locator('href=/crm/leads');
+    this.buttonBackInLeads = page.locator('href=/crm/leads');
     this.buttonContinue = page.locator('button', { hasText: 'Продолжить' });
-    this.headerNewLead = page.locator('h1', { hasText: 'Создание новой заявки' });
+    this.headerNewLead = page.locator('//header/div/div/div', { hasText: 'Создание новой заявки' });
     this.labelInputAplicant = page.locator('span', { hasText: 'Наименование организации или ФИО' });
 
    // форма создания заявки на догазификацию
   this.inputNameGro = page.locator('id=organization_id');
-  this.labelNameGro = page.locator('span', { hasText: 'Наименование организации' });
-  this.buttonClearNameGro = page.locator('#__layout > div > div > div > div > div > div:nth-child(2) > div > form > div > div:nth-child(3) > div:nth-child(1) > div > label > div > div > div > div');
+  this.labelNameGro = page.locator('label', { hasText: 'Наименование организации' });
+  this.buttonClearNameGro = page.locator('//*[@id="__layout"]/div/div[3]/div/div/div/div[2]/div/form/div/div[2]/div[1]/div/div/div/div/div/div');
   this.inputNameBranch = page.locator('id=branch_id');
-  this.labelNameBranch = page.locator('span', { hasText: 'Наименование филиала' });
+  this.labelNameBranch = page.locator('label', { hasText: 'Наименование филиала' });
   this.inputNameService = page.locator('id=service_id');
-  this.labelNameService = page.locator('span', { hasText: 'Название услуги' });
-  this.blockInformationAplicant = page.locator('div', { hasText: 'Заявитель проинформирован что,'});
+  this.labelNameService = page.locator('label', { hasText: 'Название услуги' });
+  this.blockInformationAplicant = page.locator('h4', { hasText: 'Заявитель проинформирован что,'});
   this.buttonNext = page.locator('text=Далее');
   this.inputError = page.locator('div.inputError', { hasText: 'Поле обязательно для заполнения' });
   this.selectBranch = page.locator('#__layout > div > div > div > div > div > div:nth-child(2) > div > form > div > div:nth-child(3) > div:nth-child(2) > div > label > div > div > div');
-  this.inputValueBranch = page.locator('li.dropdown__item_ja3F3', {hasText: 'г. Псков (головной офис)'});
+  this.inputValueBranch = page.locator('//ul/li/div', {hasText: 'г. Псков (головной офис)'});
 
     // блок "Кто обращается за услугой"
   this.headerBlockWho =  page.locator('h4', {hasText: 'Кто обращается за услугой'}); 
-
+  this.buttonBack = page.locator('text=Назад');
 
 
   // блок "Информация о заявителе"
-  this.headerBlockAplicant = page.locator('');
+  this.headerBlockAplicant = page.locator('h4', {hasText: 'Сведения о заявителе'});
   this.fullNameAplicant = page.locator('');
   this.labelFullNameAplicant = page.locator('');
   this.phoneAplicant = page.locator('');
@@ -296,8 +296,9 @@ export class LeadsNew {
     await this.page.goto(this.URL);
   }
 
-  async gotoUrlUser(id_user: string) {
+  async gotoFormUrlUser(id_user: string) {
     await this.page.goto(this.URL+'/'+id_user);
+    await expect(this.page).toHaveURL(this.URL+'/'+id_user);
   }  
 
   async cleanInputNameGro() {
@@ -310,11 +311,60 @@ export class LeadsNew {
   }  
 
   async fillInputBranchGro() {
-    await expect(this.labelNameBranch).toBeVisible();
-    //await this.inputNameBranch.hover;
     await this.inputNameBranch.dispatchEvent('click');
     await this.inputValueBranch.click();
+  }
+  
+  
+  async chooseElementUlList(text:string) {
+    await this.page
+    .getByRole('listitem')
+    .filter({ hasText: text })
+    .click();
   }  
 
+  async checkElementsUlList(textArray:[]) {
+    await expect(this.page
+      .getByRole('listitem'))
+      .toHaveText(textArray);
+  }
   
+  async checkNameLabel(text:string) {
+    await expect(this.page.getByLabel(text)).toBeVisible();
+  }
+
+   async checkNamePlaceholderLabel(text:string) {
+    await expect(this.page.getByPlaceholder(text)).toBeVisible();
+  }
+  
+  async fillInputAutoComplete(name:string, text:string) {
+    await this.page.getByLabel(name).fill(text);
+  }
+
+  async chooseRadioButtonList(text:string) {
+    this.page.getByText(text).click();
+  }
+  
+  async returnRadioButton(text:string) {
+    return this.page.locator('label', {has: this.page.locator('text="'+text+'"')}).locator('input');
+  }
+
+  async returnRadioButtonStateChecked(text:string) {
+    return await this.page.locator('label', {has: this.page.locator('text="'+text+'"')}).locator('input').isChecked();
+  }
+
+  async checkTextHeader(text:string) {
+    await expect(this.page.getByRole('heading',{name:text})).toBeVisible();
+  }
+
+  async checkLabelValue(title:string, value:string) {
+    expect(await this.page.locator('div.formPreview__item').filter({hasText:title}).getByText(value)).toBeVisible();
+  }
+
+
+  async checkHeaderValue(title:string, value:string) {
+    expect(await this.page.locator('div').filter({hasText:title}).getByText(value)).toBeVisible();
+  }
+
+
 }

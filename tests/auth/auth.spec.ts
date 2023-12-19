@@ -14,8 +14,8 @@ test.beforeEach(async({context}) =>{
 
 test('Проверка авторизации под Администратором', async ({ page }) => {
   const notAuth = new NotAuth(page);
-  page.on('request', request => console.log('>>', request.method(), request.url()));
-  page.on('response', response => console.log('<<', response.status(), response.url()));
+  //page.on('request', request => console.log('>>', request.method(), request.url()));
+  //page.on('response', response => console.log('<<', response.status(), response.url()));
   await notAuth.goto(); 
   await notAuth.checkFillInputLogin(data_roles['etp_admin'].login);
   await notAuth.checkFillinputPass(data_roles['etp_admin'].password);
