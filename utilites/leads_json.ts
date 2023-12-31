@@ -1,5 +1,5 @@
 import { Lead } from "../data/Leads";
-import {Faker, faker} from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 
 

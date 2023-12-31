@@ -13,7 +13,11 @@ export const test = base.extend<{ etpAdminContext: BrowserContext; seniorManager
     await etpAdminContext.close();
   },
   auditorContext: async ({ browser }, use) => {
-    const auditorContext = await browser.newContext({ storageState: `./.auth/storage_etp_admin.json` });
+    const auditorContext = await browser.newContext({ storageState: `./.auth/storage_auditor.json` });
+    await auditorContext.route('**/mc.yandex.ru/**', route => route.abort());
+    await auditorContext.route('**/www.google-analytics.com/**', route => route.abort());
+    await auditorContext.route('**/vk.com/**', route => route.abort());
+    await auditorContext.route('**/www.googletagmanager.com/**', route => route.abort());
     await use(auditorContext);
     await auditorContext.close();
   },
