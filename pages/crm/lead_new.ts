@@ -62,11 +62,12 @@ export class LeadsNew {
   readonly infoBlockAdressObjectGaz: Locator;
   readonly headerEnterAdress: Locator;
   readonly inputAdressObjectGaz: Locator;
+  readonly buttonCleanInputAdress: Locator;
   readonly labelInputAdressObjectGaz: Locator;
   readonly headerAutoFillFields: Locator;
   readonly inputRegion: Locator;
   readonly labelInputRegion: Locator;
-  readonly inputDisdrict: Locator;
+  readonly inputDistrict: Locator;
   readonly labelInputDisdrict: Locator;
   readonly inputCity: Locator;
   readonly labelInputCity: Locator;
@@ -90,6 +91,10 @@ export class LeadsNew {
   readonly inputPlannedGasConsumption: Locator;
   readonly labelInputPlannedGasConsumption: Locator; 
 
+  // 
+  readonly buttonYesInDialog: Locator;
+  readonly buttonNoInDialog: Locator;
+    
   // блок "Адрес для корреспонденции"
 
   readonly headerAdressPost: Locator;
@@ -205,35 +210,39 @@ export class LeadsNew {
   this.headerAdressObjectGaz = page.locator('');
   this.infoBlockAdressObjectGaz = page.locator('');
   this.headerEnterAdress = page.locator('');
-  this.inputAdressObjectGaz = page.locator('');
-  this.labelInputAdressObjectGaz = page.locator('');
+  this.inputAdressObjectGaz = page.locator('#gas_object_address_title');
+  this.labelInputAdressObjectGaz = page.locator('label').getByText('Регион, район, город, улица, дом, квартира');
   this.headerAutoFillFields = page.locator('');
-  this.inputRegion = page.locator('');
+  this.inputRegion = page.locator('#gas_object_address_region');
   this.labelInputRegion = page.locator('');
-  this.inputDisdrict = page.locator('');
+  this.inputDistrict = page.locator('#gas_object_address_area');
   this.labelInputDisdrict = page.locator('');
-  this.inputCity = page.locator('');
+  this.inputCity = page.locator('#gas_object_address_city');
   this.labelInputCity = page.locator('');
-  this.inputLocality = page.locator('');
+  this.inputLocality = page.locator('#gas_object_address_settlement');
   this.labelInputLocality = page.locator('');
-  this.inputStreet = page.locator('');
+  this.inputStreet = page.locator('#gas_object_address_street');
   this.labelInputStreet = page.locator('');
-  this.inputHouse = page.locator('');
+  this.inputHouse = page.locator('#gas_object_address_house');
   this.labelInputHouse = page.locator('');
-  this.inputIndex = page.locator('');
+  this.inputIndex = page.locator('#gas_object_address_zip_code');
   this.labelInputIndex = page.locator('');
-  this.inputFrame = page.locator('');
+  this.inputFrame = page.locator('#gas_object_address_block');
   this.labelInputFrame = page.locator('');
-  this.inputBuilding = page.locator('');
+  this.inputBuilding = page.locator('#gas_object_address_flat');
+  this.buttonCleanInputAdress = page.locator('form').getByRole('img');
   this.labelInputBuilding = page.locator('');
-  this.inputCadastrNumberArea = page.locator('');
+  this.inputCadastrNumberArea = page.getByPlaceholder('Кадастровый номер земельного участка');
   this.labelInputCadastrNumberArea = page.locator('');
-  this.inputCadastrNumberHouse = page.locator('');
+  this.inputCadastrNumberHouse = page.locator('#gas_object_address_cadastral_home_number');
   this.labelInputCadastrNumberHouse = page.locator('');
   this.textInfoInputPlannedGasConsumption = page.locator('');
   this.inputPlannedGasConsumption = page.locator('');
   this.labelInputPlannedGasConsumption = page.locator(''); 
 
+
+  //Диалог подтверждения после ввода кадастрового номера 
+  this.buttonYesInDialog = page.getByRole('button', {name: 'Да', exact: true}); 
   // блок "Адрес для корреспонденции"
 
   this.headerAdressPost = page.locator('');
@@ -332,7 +341,9 @@ export class LeadsNew {
   async checkNameLabel(text:string) {
     await expect(this.page.getByLabel(text)).toBeVisible();
   }
-
+  async checkTextLabel(text:string) {
+    await expect(this.page.getByText(text, {exact:true})).toBeVisible();
+  }
    async checkNamePlaceholderLabel(text:string) {
     await expect(this.page.getByPlaceholder(text)).toBeVisible();
   }
@@ -366,5 +377,11 @@ export class LeadsNew {
     expect(await this.page.locator('div').filter({hasText:title}).getByText(value)).toBeVisible();
   }
 
+  async checkTextParagraph(text:string) {
+    expect(await this.page.locator('p').getByText(text)).toBeVisible();
+  }
+  async fillInputAdress(text:string) {
+    await this.inputAdressObjectGaz.fill(text);
+  }
 
 }
