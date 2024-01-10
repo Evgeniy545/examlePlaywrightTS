@@ -91,9 +91,12 @@ export class LeadsNew {
   readonly inputPlannedGasConsumption: Locator;
   readonly labelInputPlannedGasConsumption: Locator; 
 
-  // 
+  // Диалог подтверждения
   readonly buttonYesInDialog: Locator;
   readonly buttonNoInDialog: Locator;
+
+  // 5-ый шаг "Планируемая величина максимального часового расхода газа"
+  readonly checkBoxSNTONT: Locator;
     
   // блок "Адрес для корреспонденции"
 
@@ -104,8 +107,8 @@ export class LeadsNew {
   readonly headerAutoFillFieldsPost: Locator;
   readonly inputRegionPost: Locator;
   readonly labelInputRegionPost: Locator;
-  readonly inputDisdrictPost: Locator;
-  readonly labelInputDisdrictPost: Locator;
+  readonly inputDistrictPost: Locator;
+  readonly labelInputDistrictPost: Locator;
   readonly inputCityPost: Locator;
   readonly labelInputCityPost: Locator;
   readonly inputLocalityPost: Locator;
@@ -236,37 +239,42 @@ export class LeadsNew {
   this.labelInputCadastrNumberArea = page.locator('');
   this.inputCadastrNumberHouse = page.locator('#gas_object_address_cadastral_home_number');
   this.labelInputCadastrNumberHouse = page.locator('');
-  this.textInfoInputPlannedGasConsumption = page.locator('');
-  this.inputPlannedGasConsumption = page.locator('');
-  this.labelInputPlannedGasConsumption = page.locator(''); 
+  
 
 
   //Диалог подтверждения после ввода кадастрового номера 
   this.buttonYesInDialog = page.getByRole('button', {name: 'Да', exact: true}); 
+  
+  // 5-ый шаг "Планируемая величина максимального часового расхода газа"
+  this.textInfoInputPlannedGasConsumption = page.locator('');
+  this.inputPlannedGasConsumption = page.locator('#planned_gas_consumption');
+  this.labelInputPlannedGasConsumption = page.locator('');
+  this.checkBoxSNTONT = page.locator('label').filter({ hasText: 'Садоводческое/огородническое некоммерческое товарищество' }); 
+  
   // блок "Адрес для корреспонденции"
 
   this.headerAdressPost = page.locator('');
   this.headerEnterAdressPost = page.locator('');
-  this.inputAdressPost = page.locator('');
-  this.labelInputAdressPost = page.locator('');
+  this.inputAdressPost = page.locator('#correspondence_address_title');
+  this.labelInputAdressPost = page.getByText('Регион, район, город, улица, дом, квартира');
   this.headerAutoFillFieldsPost = page.locator('');
-  this.inputRegionPost = page.locator('');
+  this.inputRegionPost = page.locator('#correspondence_address_region');
   this.labelInputRegionPost = page.locator('');
-  this.inputDisdrictPost = page.locator('');
-  this.labelInputDisdrictPost = page.locator('');
-  this.inputCityPost = page.locator('');
+  this.inputDistrictPost = page.locator('#correspondence_address_area');
+  this.labelInputDistrictPost = page.locator('');
+  this.inputCityPost = page.locator('#correspondence_address_city');
   this.labelInputCityPost = page.locator('');
-  this.inputLocalityPost = page.locator('');
+  this.inputLocalityPost = page.locator('#correspondence_address_settlement');
   this.labelInputLocalityPost = page.locator('');
-  this.inputStreetPost = page.locator('');
+  this.inputStreetPost = page.locator('#correspondence_address_street');
   this.labelInputStreetPost = page.locator('');
-  this.inputHousePost = page.locator('');
+  this.inputHousePost = page.locator('#correspondence_address_house');
   this.labelInputHousePost = page.locator('');
-  this.inputIndexPost = page.locator('');
+  this.inputIndexPost = page.locator('#correspondence_address_zip_code');
   this.labelInputIndexPost = page.locator('');
-  this.inputFramePost = page.locator('');
+  this.inputFramePost = page.locator('#correspondence_address_block');
   this.labelInputFramePost = page.locator('');
-  this.inputBuildingPost = page.locator('');
+  this.inputBuildingPost = page.locator('#correspondence_address_flat');
   this.labelInputBuildingPost = page.locator('');
   this.inputCadastrNumberAreaPost = page.locator('');
   
@@ -342,7 +350,7 @@ export class LeadsNew {
     await expect(this.page.getByLabel(text)).toBeVisible();
   }
   async checkTextLabel(text:string) {
-    await expect(this.page.getByText(text, {exact:true})).toBeVisible();
+   return await expect(this.page.getByText(text, {exact:true})).toBeVisible();
   }
    async checkNamePlaceholderLabel(text:string) {
     await expect(this.page.getByPlaceholder(text)).toBeVisible();
@@ -383,5 +391,25 @@ export class LeadsNew {
   async fillInputAdress(text:string) {
     await this.inputAdressObjectGaz.fill(text);
   }
+
+  async returnCheckBox(text:string) {
+    return this.page.locator('label').filter({ hasText: text }); 
+  }
+
+  async returnCheckBoxStatusChecked(text:string) {
+    return this.page.locator('label').filter({ hasText: text }).isChecked();
+  }
+
+  async returnLabel(text:string) {
+    return this.page.locator('label').getByText(text);
+  }
+  async fillInput(name:string, text:string) {
+    await this.page.getByLabel(name).type(text);
+  }
+
+  async returnValidationInputMessage(text:string) {
+    return this.page.locator('div.formError__item').getByText(text);
+  }
+
 
 }
