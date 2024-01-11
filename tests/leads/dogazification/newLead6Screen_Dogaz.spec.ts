@@ -64,7 +64,7 @@ test('Проверка названия полей шестого шага фо�
 
 test('Проверка валидации обязательности полей на 6 шаге', async () => {
   lead_new.buttonNext.click();
-  expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(3);
+  await expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(3);
 });
 });
 

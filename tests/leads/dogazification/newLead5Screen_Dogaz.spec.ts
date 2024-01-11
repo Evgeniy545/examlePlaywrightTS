@@ -44,11 +44,11 @@ test('Проверка заполнения чекбокса "Садоводче
   await lead_new.checkNamePlaceholderLabel('ИНН')
   await lead_new.checkTextLabel('ОГРН');
   await lead_new.checkNamePlaceholderLabel('ОГРН')
-  expect(await lead_new.returnCheckBox('Садоводческое/огородническое некоммерческое товарищество')).toBeChecked();
+  await expect(await lead_new.returnCheckBox('Садоводческое/огородническое некоммерческое товарищество')).toBeChecked();
   await lead_new.checkBoxSNTONT.click();
-  expect(await lead_new.returnCheckBoxStatusChecked('Садоводческое/огородническое некоммерческое товарищество')).toBeFalsy();
-  expect(await lead_new.returnLabel('ИНН')).toBeHidden();
-  expect(await lead_new.returnLabel('ОГРН')).toBeHidden(); 
+  await expect(await lead_new.returnCheckBoxStatusChecked('Садоводческое/огородническое некоммерческое товарищество')).toBeFalsy();
+  await expect(await lead_new.returnLabel('ИНН')).toBeHidden();
+  await expect(await lead_new.returnLabel('ОГРН')).toBeHidden(); 
 });
 
 test('Проверка названия полей пятого шага формы и их видимости', async () => {  
@@ -60,20 +60,20 @@ test('Проверка заполнения полей ИНН и ОГРН пят
   await lead_new.checkBoxSNTONT.click();  
   await lead_new.fillInput('ИНН', '1111111111');
   await lead_new.fillInput('ОГРН', '0101010111111');
-  expect(await lead_new.returnLabel('ИНН')).toHaveValue('1111111111');
-  expect(await lead_new.returnLabel('ОГРН')).toHaveValue('0101010111111');
+  await expect(await lead_new.returnLabel('ИНН')).toHaveValue('1111111111');
+  await expect(await lead_new.returnLabel('ОГРН')).toHaveValue('0101010111111');
 });
 
 test('Проверка валидации поля ИНН пятого шага формы при внесении некорркетных значений', async () => {
   await lead_new.checkBoxSNTONT.click();  
   await lead_new.fillInput('ИНН', '11111111');
-  expect(await lead_new.returnValidationInputMessage('Длина должна быть не меньше 10 символов')).toHaveCount(1);
+  await expect(await lead_new.returnValidationInputMessage('Длина должна быть не меньше 10 символов')).toHaveCount(1);
 });
 
 test('Проверка валидации поля ОГРН пятого шага формы при внесении некорркетных значений', async () => {
   await lead_new.checkBoxSNTONT.click();
   await lead_new.fillInput('ОГРН', '01010111111');  
-  expect(await lead_new.returnValidationInputMessage('Длина должна быть не меньше 13 символов')).toHaveCount(1);
+  await expect(await lead_new.returnValidationInputMessage('Длина должна быть не меньше 13 символов')).toHaveCount(1);
 });
 
 

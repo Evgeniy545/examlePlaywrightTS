@@ -118,7 +118,7 @@ test('Проверка названия полей четвертого шага
 
 test('Проверка валидации обязательности полей на 4 шаге', async () => {
   lead_new.buttonNext.click();
-  expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(5);
+  await expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(5);
 });
 });
 

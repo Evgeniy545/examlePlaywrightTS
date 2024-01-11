@@ -43,7 +43,7 @@ test('Проверка плейсхолдеров полей первого ша
 
 test('Проверка валидации обязательности поля "Наименование филиала"', async () => {
   lead_new.buttonNext.click();
-  expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(1);
+  await expect(await lead_new.returnValidationInputMessage('Поле обязательно для заполнения')).toHaveCount(1);
 });
 
 test('Проверка заполнения значения поля "Наименование филиала"', async () => {  

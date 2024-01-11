@@ -49,17 +49,17 @@ test('Проверка плейсхолдеров полей 7 шага форм
 
 test('Проверка заполнения поля "Номер полученных ранее ТУ" 7 шага формы и их видимости', async () => {
   await lead_new.fillInputAutoComplete('Номер полученных ранее ТУ', '1q2w3e4r5t');
-  expect(await lead_new.returnLabel('Номер полученных ранее ТУ')).toHaveValue('1q2w3e4r5t');
+  await expect(await lead_new.returnLabel('Номер полученных ранее ТУ')).toHaveValue('1q2w3e4r5t');
 });
 
 test('Проверка заполнения поля "Дополнительная информация" 7 шага формы и их видимости', async () => {
   await lead_new.fillInputAutoComplete('Дополнительная информация', 'Дополнительная информация');
-  expect(await lead_new.returnLabel('Дополнительная информация')).toHaveValue('Дополнительная информация');
+  await expect(await lead_new.returnLabel('Дополнительная информация')).toHaveValue('Дополнительная информация');
 });
 
 test('Проверка заполнения поля "Дата выдачи полученных ранее ТУ" вводом даты без календаря 7 шага формы и их видимости', async () => {
   await lead_new.fillInputAutoComplete('Дата выдачи полученных ранее ТУ', '20.07.2008');
-  expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue('20.07.2008');
+  await expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue('20.07.2008');
 });
 
 
@@ -67,7 +67,7 @@ test('Проверка заполнения поля "Дата выдачи по
   await lead_new.buttonRunCalendar.click();
   await lead_new.buttonToday.click(); 
   const date = await getCurrentDate();
-  expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue(date);
+  await expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue(date);
 });
 
 
