@@ -131,6 +131,14 @@ export class LeadsNew {
   readonly labelNumberSpecifications: Locator;
   readonly inputDateSpecifications: Locator;
   readonly labelDateSpecifications: Locator;
+  // Календарь 
+  readonly buttonRunCalendar: Locator;
+  readonly labelMonthYear: Locator;
+  readonly buttonNextYear: Locator;
+  readonly buttonPreviousYear: Locator;
+  readonly buttonNextMonth: Locator;
+  readonly buttonPreviousMonth: Locator;
+  readonly buttonToday:Locator;
 
   // блок "Дополнительная информация"
   readonly inputAddInformation: Locator;
@@ -284,7 +292,14 @@ export class LeadsNew {
   this.labelNumberSpecifications = page.locator('');
   this.inputDateSpecifications = page.locator('');
   this.labelDateSpecifications = page.locator('');
-
+  // Календарь 
+  this.labelMonthYear = page.locator('div.month_year');
+  this.buttonRunCalendar = page.locator('form').getByRole('img');
+  this.buttonPreviousMonth = page.locator('form').getByRole('img').nth(2);
+  this.buttonPreviousYear = page.locator('form').getByRole('img').nth(1);
+  this.buttonPreviousMonth = page.locator('form').getByRole('img').nth(3);
+  this.buttonPreviousYear = page.locator('form').getByRole('img').nth(4);
+  this.buttonToday = page.getByRole('button', { name: 'Сегодня' });
   // блок "Дополнительная информация"
   this.inputAddInformation = page.locator('');
   this.labelAddInformation = page.locator('');
@@ -401,7 +416,7 @@ export class LeadsNew {
   }
 
   async returnLabel(text:string) {
-    return this.page.locator('label').getByText(text);
+    return await this.page.locator('label').getByText(text);
   }
   async fillInput(name:string, text:string) {
     await this.page.getByLabel(name).type(text);
