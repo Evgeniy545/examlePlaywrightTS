@@ -203,3 +203,9 @@ export async function getRabbitMessages(token: string, messageable_type?: string
     return b;
 }
 
+
+export async function getCurrentDate() {
+    const current_date = new Date();
+    console.log(current_date); 
+    return current_date.toLocaleDateString();
+}

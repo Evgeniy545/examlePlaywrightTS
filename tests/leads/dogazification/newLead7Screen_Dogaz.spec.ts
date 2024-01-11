@@ -1,6 +1,7 @@
 import { LeadsNew } from '../../../pages/crm/lead_new';
 import { test } from '../../../utilites/fixtures';
 import { expect } from '@playwright/test';
+import { getCurrentDate} from '../../../utilites/helpers';
 
 test.describe('Проверка элементов шестого шага(экрана) заявки на догазификацию', () => {
 let lead_new;
@@ -29,7 +30,7 @@ await lead_new.buttonBack.click();
 await lead_new.checkTextHeader('Адрес для корреспонденции');
 });
 
-test('Проверка заголовков шестого шага', async () => {  
+test('Проверка заголовков 7-го шага', async () => {  
   await lead_new.checkTextHeader('Реквизиты ранее выданных технических условий');
   await lead_new.checkTextParagraph('Вы можете пропустить этот шаг, нажав на кнопку Далее');
 });
@@ -64,7 +65,9 @@ test('Проверка заполнения поля "Дата выдачи по
 
 test('Проверка заполнения поля "Дата выдачи полученных ранее ТУ" вводом даты из календаря 7 шага формы и их видимости', async () => {
   await lead_new.buttonRunCalendar.click();
-  //expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue('20.07.2008');
+  await lead_new.buttonToday.click(); 
+  const date = await getCurrentDate();
+  expect(await lead_new.returnLabel('Дата выдачи полученных ранее ТУ')).toHaveValue(date);
 });
 
 
