@@ -1,7 +1,6 @@
 import { LeadsNew } from '../../../pages/crm/lead_new';
 import { test } from '../../../utilites/fixtures';
 import { expect } from '@playwright/test';
-import { getCurrentDate} from '../../../utilites/helpers';
 
 test.describe('Проверка элементов шестого шага(экрана) заявки на догазификацию', () => {
 let lead_new;
