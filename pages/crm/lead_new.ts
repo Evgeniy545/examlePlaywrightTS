@@ -180,7 +180,7 @@ export class LeadsNew {
   this.inputNameService = page.locator('id=service_id');
   this.labelNameService = page.locator('label', { hasText: 'Название услуги' });
   this.blockInformationAplicant = page.locator('h4', { hasText: 'Заявитель проинформирован что,'});
-  this.buttonNext = page.locator('text=Далее');
+  this.buttonNext = page.getByRole('button', { name: 'Далее' });
   this.inputError = page.locator('div.inputError', { hasText: 'Поле обязательно для заполнения' });
   this.selectBranch = page.locator('#__layout > div > div > div > div > div > div:nth-child(2) > div > form > div > div:nth-child(3) > div:nth-child(2) > div > label > div > div > div');
   this.inputValueBranch = page.locator('//ul/li/div', {hasText: 'г. Псков (головной офис)'});
