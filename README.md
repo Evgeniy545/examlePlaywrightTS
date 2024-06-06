@@ -1,6 +1,6 @@
-# eog-autotest
+# example-autotest
 
-Автотесты для ЕОГ - Официальный портал Единого оператора газификации РФ
+
 
 ## Getting started
 
