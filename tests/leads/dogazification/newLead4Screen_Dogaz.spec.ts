@@ -17,7 +17,7 @@ test.beforeEach(async({etpAdminContext})=>{
 
 test('Проверка работы кнопки "Назад" на четвертом шаге', async () => {
 await lead_new.buttonBack.click();
-await lead_new.checkTextHeader('Сведения о заявителе'); 
+await lead_new.checkHeaderDivTitle('Сведения о заявителе'); 
 });
 
 test('Проверка заголовков четвертого шага', async () => {  

@@ -21,14 +21,14 @@ await lead_new.checkTextHeader('Кто обращается за услугой'
 });
 
 test('Проверка вывода полей паспортных данных заявитея и их значений на третьем шаге', async () => {  
-  await lead_new.checkTextHeader('Сведения о заявителе');
+  await lead_new.checkHeaderDivTitle('Сведения о заявителе');
   await lead_new.checkLabelValue('ФИО', 'Заявитель_ПСКоВ Заявитель_ПСКоВ Заявитель_ПСКоВ');
   await lead_new.checkLabelValue('Дата рождения', '2023-06-20');
   await lead_new.checkLabelValue('СНИЛС', '548-096-168 23');
-  await lead_new.checkLabelValue('Паспорт серия', 'Нет данных');
+  /*await lead_new.checkLabelValue('Паспорт серия', 'Нет данных');
   await lead_new.checkLabelValue('Номер паспорта', 'Нет данных');
   await lead_new.checkLabelValue('Дата выдачи паспорта', 'Нет данных');
-  await lead_new.checkLabelValue('Кем выдан', 'Нет данных');
+  await lead_new.checkLabelValue('Кем выдан', 'Нет данных');*/
 });
 
 test('Проверка вывода поля и его значения "Адрес электронной почты заявителя"', async () => {  

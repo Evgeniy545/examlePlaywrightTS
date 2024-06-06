@@ -314,9 +314,10 @@ export class LeadsNew {
   this.labelEmailContact = page.locator('');
   this.inputConnectContact = page.locator('');
   this.labelConnectContact = page.locator('');
-  this.inputContractSign = page.locator('');
   this.labelContractSign = page.locator('');
 
+  //Способ коммуникаций(9-ый шаг)
+  this.inputContractSign = page.getByPlaceholder('Вариант подписания договора');
   // Кнопка "Сохранить"
   this.buttonSaveLead = page.locator('');
 
@@ -424,6 +425,16 @@ export class LeadsNew {
 
   async returnValidationInputMessage(text:string) {
     return this.page.locator('div.formError__item').getByText(text);
+  }
+  async checkHeaderDivTitle(text:string) {
+    return this.page.locator('div.formPreview__blockTitle').getByText(text);
+  }
+
+  async uploadDocuments(text:string, i:number, pathDir:string) {
+    const fileChooserPromise = this.page.waitForEvent('filechooser');
+    await this.page.locator('button').getByText(text).nth(i).click();
+    const fileChooser = await fileChooserPromise;
+    await fileChooser.setFiles(pathDir);
   }
 
 

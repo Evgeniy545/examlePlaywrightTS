@@ -63,7 +63,7 @@ test('Проверка заполнения поля "Дата выдачи по
 
 
 test('Проверка валидации поля телефон на полноту заполнения на 8 шаге', async () => {
-  await lead_new.fillInputAutoComplete('Телефон', '111111111');
+  await lead_new.fillInputAutoComplete('Телефон', '11111111');
   await expect(await lead_new.returnValidationInputMessage('Некорректно заполнен телефон')).toHaveCount(1); // Возможно баг на полноту телефона без 11-ой цифры
 });
 
