@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OTY3Iiwic2NwIjoidjFfYWRtaW4iLCJhdWQiOm51bGwsImlhdCI6MTcwMjQ3NTkyOCwiZXhwIjoxNzA1MTA1Njc0LCJqdGkiOiIxNWZlZmQ1ZC1hN2I2LTRjYzUtYWUzMS01ZDUxYWMxZWYxOWQifQ.Kumss7MMjakVgRwhVMgrS3Byra5zjrPPZQi3I2a0j_g",
+      "domain": ".etpgpb.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
